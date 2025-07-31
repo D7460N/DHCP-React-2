@@ -2,7 +2,7 @@ import { useState } from "react";
 import { EC2InstancesTable } from "../../components/EC2InstancesTable/EC2InstancesTable";
 import { ActivityFeed } from "../../components/ActivityFeed/ActivityFeed";
 
-const OptionSetsContent = () => {
+const AuditContent = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   
   return (
