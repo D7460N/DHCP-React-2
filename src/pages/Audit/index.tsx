@@ -2,7 +2,7 @@ import { useState } from "react";
 import { EC2InstancesTable } from "../../components/EC2InstancesTable/EC2InstancesTable";
 import { ActivityFeed } from "../../components/ActivityFeed/ActivityFeed";
 
-const AuditContent = () => {
+const OptionSetsContent = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   
   return (
@@ -17,32 +17,33 @@ const AuditContent = () => {
             isSidebarOpen ? 'bg-blue-500 text-white' : 'bg-white'
           }`}
           >
-            open
+            Open
           </button>
         </div>
 
-      <div className='bg-white border rounded-lg shadow-sm'>
-        <EC2InstancesTable />
-      </div>
-    </div>
-    {/* Right sidebar */}
-  {isSidebarOpen && (
-    <div className="w-1/4 space-y-6">
         <div className='bg-white border rounded-lg shadow-sm'>
-          <button
-            onClick={() => setIsSidebarOpen(false)}
-            className={`px-4 py-2 rounded-lg border ${
-              !isSidebarOpen ? 'bg-blue-500 text-white' : 'bg-white'
-            }`}
-            >
-            close
-          </button>
-          <ActivityFeed />
+          <EC2InstancesTable />
         </div>
+      </div>
+    
+      {/* Right sidebar */}
+      {isSidebarOpen && (
+        <div className="w-1/4 space-y-6">
+          <div className='bg-white border rounded-lg shadow-sm'>
+            <button
+              onClick={() => setIsSidebarOpen(false)}
+              className={`px-4 py-2 rounded-lg border ${
+                !isSidebarOpen ? 'bg-blue-500 text-white' : 'bg-white'
+              }`}
+            >
+              Close
+            </button>
+              <ActivityFeed />
+            </div>
 
+        </div>
+      )}
     </div>
-  )}
-  </div>
   );
 };
 
