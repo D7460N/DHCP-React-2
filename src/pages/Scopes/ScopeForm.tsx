@@ -4,7 +4,7 @@ import { createScope, getScopeById, updateScope } from "./api/scopeApi";
 import { Scope } from "./types/scope";
 import { useParams } from "react-router-dom";
 
-interface ScopeFromProps {
+interface ScopeFormProps {
   onSubmitSuccess?: () => void;
   onCancel?: () => void;
   initialScope?: Scope;
@@ -47,7 +47,7 @@ export const ScopeForm: React.FC<ScopeFormProps> = ({
         Description: initialScope.Description,
         Subnet: initialScope.Subnet,
         SubnetMask: initialScope.SubnetMask,
-        StartIPv4Address: initialScope.StartIpv4Address,
+        StartIPv4Address: initialScope.StartIPv4Address,
         EndIPv4Address: initialScope.EndIPv4Address,
         Active: initialScope.Active,
         DateModified: initialScope.DateModified,
@@ -96,13 +96,13 @@ export const ScopeForm: React.FC<ScopeFormProps> = ({
   };
 
   const handleReset = () => {
-    of (initialScope) {
+    if (initialScope) {
     setForm({
       Name: initialScope.Name,
       Description: initialScope.Description,
       Subnet: initialScope.Subnet,
       SubnetMask: initialScope.SubnetMask,
-      StartIPv4Address: initialScope.StartIpv4Address,
+      StartIPv4Address: initialScope.StartIPv4Address,
       EndIPv4Address: initialScope.EndIPv4Address,
       Active: initialScope.Active,
       DateModified: initialScope.DateModified,
