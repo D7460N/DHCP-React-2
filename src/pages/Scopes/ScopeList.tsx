@@ -24,16 +24,20 @@ const ScopeList: React.FC<Props> = ({
 }) => {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
 
-  // Convert scopes to ahve an id property
+  // Convert scopes to have an id property
   const scopesWithId: ScopeWithId[] = scopes.map(scope => ({
     ...scope,
     id: scope.Name // Use Name as the id
   }));
 
-  const toggleMenu = (scopeID: string) => (
+  const toggleMenu = (scopeId: string) => {
+    setActiveMenu(activeMenu === scopeId ? null : scopeId);
+  };
+    
+  const renderActions = (_: string, scope: ScopeWithId) => (
     <div className="relative">
       <button
-        onClick{() => toggleMenu(scope.Neme)}
+        onClick{() => toggleMenu(scope.Name)}
         className="hover:bg-gray-100 p-2 rounded-full"
       >
         <MoreVertical className="h-5 w-5 text-gray-500" />
