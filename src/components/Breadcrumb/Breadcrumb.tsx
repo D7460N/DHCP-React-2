@@ -7,7 +7,7 @@ export function Breadcurmb() {
   const location = useLocation();
   const { breadcrumb } = findActiveNavigation(navigationConfig, location.pathname);
 
-  if (breadcrumb.length <=1 ) return null;
+  if (breadcrumb.length <= 1) return null;
 
   return (
     <nav className="flex" aria-label="Breadcrumb">
