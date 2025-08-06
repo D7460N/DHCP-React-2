@@ -33,16 +33,16 @@ export const EC2InstancesTable = () {
     fetchInstances();
   }, []);
 
-  if (isLoading) return <div>Loading instances...</div>
-  if (error) return <div>Error:</div>
-  if (instances.length === 0) return <div>No instances found</div>
+  if (isLoading) return <div>Loading instances...</div>;
+  if (error) return <div>Error:</div>;
+  if (instances.length === 0) return <div>No instances found</div>;
 
   return (
     <div className="p-6">
       <h3 className="text-md font-semibold mb-2">Resource Overview</h3>
       <p className="mb-6"> Track and assess your cloud infrastructure components and their current state.</p>
       <table className="min-w-full">
-        <thead className="barder-b">
+        <thead className="border-b">
           <tr>
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
               Name
@@ -61,7 +61,7 @@ export const EC2InstancesTable = () {
             </th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="'bg-white divide-y divide-gray-200'">
           {instances.map((instance) => (
             <tr key={instance.instanceId}>
               <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
@@ -72,9 +72,10 @@ export const EC2InstancesTable = () {
               </td>
               <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                 <span
-                  className={`px-3 px-1 inline-flex items-center gap-1 text-xs font-medium rounded-full &{
+                  className={`px-3 py-1 inline-flex items-center gap-1 text-xs font-medium rounded-full ${
                     instance.state === 'running' ? 'bg-green-100 text-green-700' :
                     instance.state === 'stopped' ? 'bg-gray-100 text-gray-700' :
+                    'bg-gray-100 text-gray-700'
                   }`}
                   >
                   {instance.state === 'running' && {
@@ -96,7 +97,7 @@ export const EC2InstancesTable = () {
           ))}
         </tbody>
       </table>
-      <Pagination />
+      < Pagination />
     </div>
   );
 };
