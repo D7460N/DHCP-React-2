@@ -36,11 +36,10 @@ const chartData = [{ month: "january", desktop: 1260, mobile: 570 }];
 const daysInMonth = (month: number, year: number) => new Date(year, month + 1, 0).geDate();
 
 export default function Calendar() {
-
   const [selectedDate, setSelectedDate] = useState(toDateKey(new Date()));
   const currentMonth = 5; // June (0-indexed)
   const currentYear = 2025;
-  const days = Array.from({ length: daysInMonth(currentMonth, currentYear) }, (_, i) => i +1);
+  const days = Array.from({ length: daysInMonth(currentMonth, currentYear) }, (_, i) => i + 1);
 
   const parseSelectedDate = (dateString: string) => {
     const [year, month, day] = dateString.split('-').map(Number);
@@ -64,7 +63,7 @@ export default function Calendar() {
             <div key={`empty-${i}`} />
           ))}
           {days.map((day) => {
-            const dateStr = `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${Stromg(day).padStart(2, '0')}`;
+            const dateStr = `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
             const isSelected = selectedDate === dateStr;
             return (
               <button
@@ -92,21 +91,21 @@ export default function Calendar() {
             </div>
             <div className="space-y-2">
               {events[selectedDate]?.map((event, i) => (
-                <div key={i} className="bg-primary/50 text-sky-800 roundedmd p-2 text-sm">
+                <div key={i} className="bg-primary/50 text-sky-800 rounded-md p-2 text-sm">
                   <div className="front-medium">{event.title}</div>
                   <div className="text-xs text-sky-800">
-                    {parseSelectedDate(selectedDate).toLodalDateString("en-US", {
+                    {parseSelectedDate(selectedDate).toLocalDateString("en-US", {
                       month: "short",
                       day: "numeric",
                     })}, {event.time}
                   </div>
                 </div>
-              )) || <p className="text-xs teext-gray-500">No events</p>}
+              )) || <p className="text-xs text-gray-500">No events</p>}
             </div>
           </div>
         </div>
       </div>
     </div>
-    );
+  );
 }
 
