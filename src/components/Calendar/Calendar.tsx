@@ -1,9 +1,15 @@
 "use client";
 
-import { useState } from 'react';
-import { ChevronLeft, ChevronRight, Plus, TrendingUp } from 'lucide-react';
-import clsx frp, 'clsx';
-import { Label, PolarRadiusAxis, RadialBar, RadialBarChart, Tootip } from 'recharts';
+import { useState } from "react";
+import { ChevronLeft, ChevronRight, Plus, TrendingUp } from "lucide-react";
+import clsx from "clsx";
+import { 
+  Label, 
+  PolarRadiusAxis,
+  RadialBar,
+  RadialBarChart,
+  Tootip
+} from "recharts";
 
 type Event = {
   title: string;
