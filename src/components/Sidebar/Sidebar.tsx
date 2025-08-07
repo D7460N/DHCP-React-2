@@ -1,4 +1,4 @@
-import { link, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import clsx from 'clsx';
 import { navigationConfig } from '../../config/navigation';
 import { findActiveNavigation, isRouteActive } from '../../utils/navigation';
@@ -8,7 +8,7 @@ import { CloudCogIcon } from 'lucide-react';
 export default function Sidebar () {
   const location = useLocation();
 
-  cont rederNavItem = (item: NavigationItem) => {
+  cont renderNavItem = (item: NavigationItem) => {
     const isActive = isRouteActive(item.href, location.pathname);
 
     return (
@@ -19,7 +19,7 @@ export default function Sidebar () {
           'group relative flex items-center gap-2.5 rounded-md px-4 py-2 font-medium',
           isActive
             ? 'bg-primary/50 text-sky-800'
-            : 'text-gray600 hover:bg-gray-100'
+            : 'text-gray-600 hover:bg-gray-100'
         )}
         >
         {item.icon && <item.icon className="h-5 w-5 opacity-75" />}
@@ -28,12 +28,12 @@ export default function Sidebar () {
     );
   };
   return (
-    <div className="flex-h-screen flex-col justify=between border-r bg-white">
+    <div className="flex h-screen flex-col justify-between border-r bg-white">
       <div className="px-4 py-6">
         <div className="p-6">
           <div className="flex items-center gap-2">
             <CloudCogIcon className="h-6 w-6" />
-            <div className="text-x1">DHCP</div>
+            <div className="text-xl">DHCP</div>
           </div>
         </div>
         <nav aria-label="Main Nav" className="mt-6 flex flex-col space-y-1">
