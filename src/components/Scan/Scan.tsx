@@ -24,7 +24,7 @@ export default function Scan() {
         resourceName: "prod-bucket",
         policyName: "Owner Tag Required",
         isCompliant: false,
-        failureReason: "Missing tag: Ownser",
+        failureReason: "Missing tag: Owner",
         policyId: 1,
       },
       {
@@ -47,7 +47,7 @@ export default function Scan() {
     <div className="flex flex-col p-6">
       <h3 className="text-md font-semibold mb-2">Compliance Scan</h3>
       <p className="mb-6">Run a manual compliance scan across all active policies.</p>
-      <div className="flex flex-col p-4">
+      <div className="flex flex-col gap-4">
         <div className="p-4 space-y-4">
           {status === "idle" && (
             <button
