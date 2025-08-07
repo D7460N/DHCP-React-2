@@ -12,7 +12,7 @@ export const getResourceTypes = async (): Promise<DropdownItem[]> => {
     const response = await axios.get<DropdownItem[]>(`${API_BASE_URL}/ResourceType`);
     return response.data;
   } catch (error) {
-    console.error("Error fetching policy by ID:", error);
+    console.error("Error fetching policy by types:", error);
     throw error;
   }
 };
