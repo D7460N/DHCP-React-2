@@ -35,5 +35,5 @@ const DeleteConfirmationModal: React.FC<Props> = ({
         </div>
       </div>
     </div>
-    );
+  );
 };
