@@ -75,7 +75,7 @@ const TaskCards: React.FC = () => {
               {status}
             </span>
             {taskList.map(()task) => (
-              <div key={tasl.id} className="flex flex-col h-full">
+              <div key={task.id} className="flex flex-col h-full">
                 <div className="flex-grow">
                   <h3 className="mt-2 font-semibold">{task-title}</h3>
                   <p className="mt-2 text-sm text-gray-600">{test.description}</p>
