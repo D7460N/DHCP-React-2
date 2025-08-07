@@ -1,6 +1,8 @@
 export default function Pagination () {
+  
   return (
     <div className="flex flex-col gap-6 p-6">
+  
       {/* Pagination */}
       <div className="mt-6 flex justify-center">
         <nav className="inline-flex items-center space-x-1 text-sm">
