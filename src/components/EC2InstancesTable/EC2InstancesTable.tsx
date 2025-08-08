@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Pagination from '../Pagination/Pagination';
 
-interface EC2Instance { 
-  instanceId: string; 
+interface EC2Instance {
+  instanceId: string;
   instanceType: string;
   state: string;
   privateIpAddress: string;
@@ -13,7 +13,7 @@ interface EC2Instance {
 }
 
 export const EC2InstancesTable = () {
-  const [instances, setInstances] = useState(EC2Instance[]>([]);
+  const [instances, setInstances] = useState<EC2Instance[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -61,7 +61,7 @@ export const EC2InstancesTable = () {
             </th>
           </tr>
         </thead>
-        <tbody className="'bg-white divide-y divide-gray-200'">
+        <tbody className="bg-white divide-y divide-gray-200">
           {instances.map((instance) => (
             <tr key={instance.instanceId}>
               <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
@@ -78,26 +78,26 @@ export const EC2InstancesTable = () {
                     'bg-gray-100 text-gray-700'
                   }`}
                   >
-                  {instance.state === 'running' && {
+                  {instance.state === 'running' && (
                     <span className="w-1 h-1 rounded-full bg-green-600"></span>
-                  }}
-                  {instance.state === 'stopped' && {
+                  )}
+                  {instance.state === 'stopped' && (
                     <span className="w-1 h-1 rounded-full bg-gray-600"></span>
-                  }}
+                  )}
                   {instance.state.charAt(0).toUpperCase() + instance.state.slice(1)}
                 </span>
               </td>
-              <td className="px-6 px-4 whitespace-nowrap text-sm text-gray-500">
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                 {instance.privateIpAddress}
               </td>
-              <td className="px-6 px-4 whitespace-nowrap text-sm text-gray-500">
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                 {instance.platform}
               </td>
             </tr>
           ))}
         </tbody>
       </table>
-      < Pagination />
+      <Pagination />
     </div>
   );
 };

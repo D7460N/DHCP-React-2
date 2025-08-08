@@ -4,7 +4,7 @@ import { ActivityFeed } from "../../components/ActivityFeed/ActivityFeed";
 
 const OptionSetsContent = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-  
+
   return (
     <div className="flex gap-6">
       {/* Main content area */}
@@ -25,7 +25,7 @@ const OptionSetsContent = () => {
           <EC2InstancesTable />
         </div>
       </div>
-    
+
       {/* Right sidebar */}
       {isSidebarOpen && (
         <div className="w-1/4 space-y-6">
@@ -47,4 +47,4 @@ const OptionSetsContent = () => {
   );
 };
 
-export default OptionsSetsContent;
+export default OptionSetsContent;

@@ -35,19 +35,19 @@ const ScopeContent = () => {
   const handleFormSubmitSuccess = () => {
     refreshScopes();
     setIsSidebarOpen(false);
-    setSelectedScope(null); // Clear selected scopoe after submission
+    setSelectedScope(null); // Clear selected scope after submission
   };
 
   const handleCloseSidebar = () => {
     setIsSidebarOpen(false);
-    setSelectedScope(null); // Clear selected scopoe when closing sidebar
+    setSelectedScope(null); // Clear selected scope when closing sidebar
   };
 
   const handleAddNewScope = () => {
-    setSelectedScope(null); // Clear any selected scopoe
+    setSelectedScope(null); // Clear any selected scope
     setIsSidebarOpen(true); // Open sidebar with empty form
   };
-  
+
   return (
     <div className="flex gap-6">
       {/* Main content area */}

@@ -33,11 +33,11 @@ const ScopeList: React.FC<Props> = ({
   const toggleMenu = (scopeId: string) => {
     setActiveMenu(activeMenu === scopeId ? null : scopeId);
   };
-    
+
   const renderActions = (_: string, scope: ScopeWithId) => (
     <div className="relative">
       <button
-        onClick{() => toggleMenu(scope.Name)}
+        onClick={() => toggleMenu(scope.Name)}
         className="hover:bg-gray-100 p-2 rounded-full"
       >
         <MoreVertical className="h-5 w-5 text-gray-500" />
@@ -73,7 +73,7 @@ const ScopeList: React.FC<Props> = ({
 const customHeader = (
   <div className="flex justify-between items-center">
     <div>
-      <h3 className="text-md font-semibold">>Current Scopes</h3>
+      <h3 className="text-md font-semibold">Current Scopes</h3>
       <p className="text-sm text-gray-500">These scopes represent the currently active DHCP configurations across your network infrastructure.</p>
     </div>
     {onAddNew && (
@@ -108,7 +108,7 @@ return scopesWithId.length > 0 ? (
               <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">{scope.Name}</td>
               <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">{scope.Description}</td>
               <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">{scope.Subnet}</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">{`${scope.SartIPv4Address} - ${scope.EndIPv4Address}`}</td>
+              <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">{`${scope.StartIPv4Address} - ${scope.EndIPv4Address}`}</td>
               <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">{scope.Active ? 'Active' : 'Inactive'}</td>
               <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">{renderActions(scope.id, scope)}</td>
             </tr>

@@ -12,13 +12,13 @@ export interface Scope {
 
 export interface ScopeUpdateRequest {
   Name: string;
-  UpdateName?: string;
-  UpdateDescription?: string;
-  UpdateStartIPv4Address?: string;
-  UpdateEndIPv4Address?: string;
-  UpdateDHCPServer?: string;
-  UpdateDelay?: number;
-  UpdateLeaseDuration?: number;
-  UpdateActive?: boolean;
+  UpdatedName?: string;
+  UpdatedDescription?: string;
+  UpdatedStartIPv4Address?: string;
+  UpdatedEndIPv4Address?: string;
+  UpdatedDHCPServer?: string;
+  UpdatedDelay?: number;
+  UpdatedLeaseDuration?: number;
+  UpdatedActive?: boolean;
   ReturnListFlag?: boolean;
 }

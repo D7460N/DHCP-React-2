@@ -5,7 +5,7 @@ export const getPolicyTypes = async () => {
     const response = await axios.get("http://localhost:5110/api/policyType");
     return response.data;
   } catch (error) {
-    console.error("Error fetching policies:", error);
+    console.error("Error fetching policy types:", error);
     throw error;
   }
 };

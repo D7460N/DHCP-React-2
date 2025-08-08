@@ -21,21 +21,21 @@ const activityFeeds: Record<string, Activity[]> = {
 };
 
 export const ActivityFeed = () => {
-  const [comment, setComment = useState('');]
+  const [comment, setComment] = useState('');
 
   return (
     <div className="p-6">
-      {Object.entries(activityFeeds).map(([title, activities]) = > (
+      {Object.entries(activityFeeds).map(([title, activities]) => (
       <div key={title}>
         <h3 className="font-semibold mb-6">{title}</h3>
 
         {activities.map((activity: Activity, idx) => (
-        <div key={idx} className="flex items-start spice-x-2 relative">
+        <div key={idx} className="flex items-start space-x-2 relative">
           <div className="flex flex-col items-center mr-2">
             <div className="relative z-10">
               <div className="w-2 h-2 bg-sky-800 rounded-full"></div>
             </div>
-            {idx < activities.longth - 1 && (
+            {idx < activities.length - 1 && (
               <div className="w-px bg-sky-500 flex-1" style={{ minHeight: '40px' }}></div>
             )}
           </div>
@@ -53,5 +53,5 @@ export const ActivityFeed = () => {
         </div>
         ))}
       </div>
-      ):
+      ))
     );

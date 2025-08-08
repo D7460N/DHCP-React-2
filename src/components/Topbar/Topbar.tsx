@@ -14,7 +14,7 @@ export const Topbar = () => {
           className="rounded-md px-3 py-1.5 text-sm w-1/3 outline-none"
           />
       </div>
-  
+
       <div className="flex items-center gap-4">
         <button>
           <span className="sr-only">Notifications</span>

@@ -21,7 +21,7 @@ export default defineConfig({
     port: 4173,
     cors: true,
     headers: {
-      'Access-Control_Allow_Origin': '*',
+      'Access-Control-Allow-Origin': '*',
     }
   },
   build: {

@@ -8,7 +8,7 @@ import { CloudCogIcon } from 'lucide-react';
 export default function Sidebar () {
   const location = useLocation();
 
-  cont renderNavItem = (item: NavigationItem) => {
+  const renderNavItem = (item: NavigationItem) => {
     const isActive = isRouteActive(item.href, location.pathname);
 
     return (

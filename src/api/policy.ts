@@ -2,17 +2,17 @@ import axios from "axios";
 
 export const createPolicy = async (data: any) => {
   try {
-    const response = await axios.get("http://localhost:5110/api/policy", data);
+    const response = await axios.post("http://localhost:5110/api/policy", data);
     return response.data;
   } catch (error) {
-    console.error("Error fetching policies", error);
+    console.error("Error creating policies", error);
     throw error;
   }
 };
 
 export const getPolicies = async (id: number) => {
   try {
-    const response = await axios.get("http://localhost:5110/api/CloudProvider");
+    const response = await axios.get("http://localhost:5110/api/policy");
     return response.data;
   } catch (error) {
     console.error("Error fetching policy by ID:", error);

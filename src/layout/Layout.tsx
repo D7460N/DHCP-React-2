@@ -2,8 +2,8 @@ import { Routes, Route } from 'react-router-dom';
 import React from "react";
 import Sidebar from "../components/Sidebar/Sidebar";
 import { Topbar } from "../components/Topbar/Topbar";
-import { ScopeForm } from '../pages/Scopes/SideForm';
-import OptionTypeContetn from '../pages/OptionTypes/OptionTypeContent';
+import { ScopeForm } from '../pages/Scopes/ScopeForm';
+import OptionTypeContent from '../pages/OptionTypes/OptionTypeContent';
 import ServerContent from '../pages/Servers/ServerContent';
 import AuditContent from '../pages/Audit';
 import ScopeTypesContent from '../pages/ScopeTypes';
@@ -11,7 +11,7 @@ import OptionSetsContent from '../pages/OptionSets';
 import ServerTypesContent from '../pages/ServerTypes';
 import ScopeContent from '../pages/Scopes';
 
-export const Layout = ({ children }: { children: React.ReactMode }) => {
+export const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="flex h-screen bg-white">
       <Sidebar />
@@ -32,4 +32,3 @@ export const Layout = ({ children }: { children: React.ReactMode }) => {
     </div>
   );
 }
-  

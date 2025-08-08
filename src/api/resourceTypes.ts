@@ -12,12 +12,12 @@ export const getResourceTypes = async (): Promise<DropdownItem[]> => {
     const response = await axios.get<DropdownItem[]>(`${API_BASE_URL}/ResourceType`);
     return response.data;
   } catch (error) {
-    console.error("Error fetching policy by types:", error);
+    console.error("Error fetching resource types:", error);
     throw error;
   }
 };
 
-export const getResourceTypesByCloudProvider = async (providerID: string | number): Promise<DropdownItem[]> => {
+export const getResourceTypesByCloudProvider = async (providerId: string | number): Promise<DropdownItem[]> => {
   try {
     const response = await axios.get<DropdownItem[]>(
       `${API_BASE_URL}/ResourceType/by-cloud?providerId=${providerId}`

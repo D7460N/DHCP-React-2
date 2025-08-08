@@ -4,8 +4,8 @@ import { useState } from "react";
 import { Loader2, ShieldCheck } from "lucid-react";
 import { motion } from "framer-motion";
 
-interface ScanResult { 
-  resourceName: string; 
+interface ScanResults {
+  resourceName: string;
   policyName: string;
   isCompliant: boolean;
   failureReason?: string;
@@ -30,7 +30,7 @@ export default function Scan() {
       {
         resourceName: "dev-bucket",
         policyName: "Owner Tag Required",
-        isCompliant: "true",
+        isCompliant: true,
         policyId: 1,
       },
     ]);
@@ -38,11 +38,11 @@ export default function Scan() {
   };
 
   const handleViewDetails = (policyId: number) => {
-    if (typof window !== "undefined") {
+    if (typeof window !== "undefined") {
       window.location.href = `/policies/${policyId}`;
     }
   };
-  
+
   return (
     <div className="flex flex-col p-6">
       <h3 className="text-md font-semibold mb-2">Compliance Scan</h3>
@@ -67,7 +67,7 @@ export default function Scan() {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duuration: 0.5 }}
+              transition={{ duration: 0.5 }}
               className="w-full"
               >
               <ShieldCheck className="h-10 w-10 text-green-600 mx-auto" />
@@ -81,7 +81,7 @@ export default function Scan() {
                       key={i}
                       className={`p-3 rounded-lg text-sm ${
                         r.isCompliant
-                        ? "border-green-300 bg-green 50"
+                        ? "border-green-300 bg-green-50"
                         : "border-red-300 bg-red-50"
                       }`}
                       >
@@ -91,13 +91,13 @@ export default function Scan() {
                       </div>
                       {!r.isCompliant && r.failureReason && (
                         <div className="text-red-600 mt-1">
-                          ❌ {r.falureReason}
+                          ❌ {r.failureReason}
                         </div>
                       )}
                       {r.isCompliant && (
                         <div className="text-green-600 mt-1">✅ Compliant</div>
                       )}
-                      {r.policyId&& (
+                      {r.policyId && (
                         <button
                           className="mt-2 text-xs text-gray-500 underline px-4 py-2"
                           onClick={() => handleViewDetails(r.policyId!)}
@@ -114,7 +114,7 @@ export default function Scan() {
                 </p>
               )}
               <button
-                className="mt-6 mx-auto block px-4 py-2 rounded-lg bg-promary/50 text-sky-100"
+                className="mt-6 mx-auto block px-4 py-2 rounded-lg bg-primary/50 text-sky-100"
                 onClick={() => setStatus("idle")}
                 >
                 Run again

@@ -2,14 +2,14 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Pagination from '../Pagination/Pagination';
 
-interface Column<T> { 
-  header: string; 
+interface Column<T> {
+  header: string;
   accessor: keyof T;
-  render?: (value: any, item: T) => React.ReactMode;
+  render?: (value: any, item: T) => React.ReactNode;
 }
 
-interface Column<T> { 
-  title: string; 
+interface Column<T> {
+  title: string;
   description: string;
   data?: T[];
   endpoint?: string;
@@ -44,7 +44,7 @@ export function GenericResourceTable<T extends { id: string }>({
     };
     fetchData();
   }
-  }, [endpoint, reesourceName, initialData]);
+  }, [endpoint, resourceName, initialData]);
 
   if (isLoading) return <div>Loading instances...</div>;
   if (error) return <div>Error:</div>;

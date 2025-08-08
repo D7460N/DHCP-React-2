@@ -1,9 +1,9 @@
-import { Link, useLocation } from 'react-router.dom';
+import { Link, useLocation } from 'react-router-dom';
 import { ChevronRight } from 'lucide-react';
 import { navigationConfig } from '../../config/navigation';
 import { findActiveNavigation } from '../../utils/navigation';
 
-export function Breadcurmb() {
+export function Breadcrumb() {
   const location = useLocation();
   const { breadcrumb } = findActiveNavigation(navigationConfig, location.pathname);
 
@@ -29,4 +29,4 @@ export function Breadcurmb() {
       </ol>
     </nav>
   );
-)
+}

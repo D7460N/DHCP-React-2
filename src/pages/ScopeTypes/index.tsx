@@ -4,11 +4,11 @@ import { ActivityFeed } from "../../components/ActivityFeed/ActivityFeed";
 
 const ScopeTypesContent = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-  
+
   return (
     <div className="flex gap-6">
       {/* Main content area */}
-      <div className=`flex-1 space-y-6 ${!isSidebarOpen ? 'w-full' : ''}`>
+      <div className={`flex-1 space-y-6 ${!isSidebarOpen ? 'w-full' : ''}`}>
       {/* Sidebar toggle buttons */}
       <div className="flex gap-2 mb-4">
         <button
@@ -25,7 +25,7 @@ const ScopeTypesContent = () => {
           <EC2InstancesTable />
         </div>
       </div>
-    
+
       {/* Right sidebar */}
       {isSidebarOpen && (
         <div className="w-1/4 space-y-6">

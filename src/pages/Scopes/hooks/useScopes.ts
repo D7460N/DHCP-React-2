@@ -1,9 +1,9 @@
 import { useState, useEffect, useCallback } from 'react';
 import { getScopes } from '../api/scopeApi';
-import { Sope } from '../types/scope';
+import { Scope } from '../types/scope';
 
 export const useScopes = () => {
-  const [scopes, setScopes] = useState<Scope[]?([]);
+  const [scopes, setScopes] = useState<Scope[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
 
@@ -15,10 +15,10 @@ export const useScopes = () => {
       setError(null);
     } catch (err) {
       setError(err instanceof Error ? err : new Error('Unknown error occurred'));
-      } finally {
+    } finally {
       setIsLoading(false);
-      }
-    }, []);
+    }
+  }, []);
 
   useEffect(() => {
     fetchScopes();

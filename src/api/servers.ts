@@ -5,7 +5,7 @@ export const getServers = async () => {
     const response = await axios.get("https://localhost:44377/api/admin/Servers");
     return response.data;
   } catch (error) {
-    console.error("Error fetching serers:", error);
+    console.error("Error fetching servers:", error);
     throw error;
   }
 };

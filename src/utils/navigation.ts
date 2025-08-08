@@ -4,11 +4,11 @@ import { navigationConfig } from '../config/navigation';
 export const findActiveNavigation = (
   items: NavigationItem[],
   currentPath: string,
-  breadcrumb: BreadCrumbItem[] = []
+  breadcrumb: BreadcrumbItem[] = []
   ): { activeItem: NavigationItem | null; breadcrumb: BreadcrumbItem[] } => {
     for (const item of items) {
       if (isRouteActive(item.href, currentPath)) {
-        const newBeadcrumb = [...breadcrumb, { name: item.name, href: item.href}];
+        const newBreadcrumb = [...breadcrumb, { name: item.name, href: item.href}];
 
         if (item.children) {
           const childResult = findActiveNavigation(item.children, currentPath, newBreadcrumb);
@@ -23,7 +23,7 @@ export const findActiveNavigation = (
   };
 
 export const isRouteActive = (itemPath: string, currentPath: string): boolean => {
-  it (itemPath === '/') {
+  if (itemPath === '/') {
     return currentPath === '/';
   }
 

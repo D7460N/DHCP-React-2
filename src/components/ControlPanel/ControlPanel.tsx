@@ -9,12 +9,12 @@ export const ControlPanel: React.FC<ControlPanelProps> = ({ onVpcChange, onProvi
   const [selectedVpc, setSelectedVpc] = useState<string>('');
   const [selectedProvider, setSelectedProvider] = useState<string>('aws');
 
-  const cloudProviders =[
+  const cloudProviders = [
     { value: 'aws', label: 'aws' },
     { value: 'azure', label: 'Azure' },
     { value: 'gcp', label: 'Google Cloud Platform' }
   ];
-  const vpcs =[
+  const vpcs = [
     { value: 'vpc-1', label: 'VPC 1' },
     { value: 'vpc-2', label: 'VPC 2' },
     { value: 'vpc-3', label: 'VPC 3' }
@@ -26,8 +26,8 @@ export const ControlPanel: React.FC<ControlPanelProps> = ({ onVpcChange, onProvi
   };
 
   const handleProviderChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedVpc(e.target.value);
-    onVpcChange(e.target.value);
+    setSelectedProvider(e.target.value);
+    onProviderChange(e.target.value);
   };
 
   return (
@@ -36,28 +36,28 @@ export const ControlPanel: React.FC<ControlPanelProps> = ({ onVpcChange, onProvi
       <p className="mb-6">Select cloud provider and VPC to filter dashboard data.</p>
       <div className="space-y-6">
         <select
-          className="w-full bg-white boder border-gray-300 rounded-md p-2"
+          className="w-full bg-white border border-gray-300 rounded-md p-2"
           name="cloudProvider"
           required
           onChange={handleProviderChange}
           value={selectedProvider}
           >
           <option value="">Select Cloud Provider</option>
-          <cloudProvider.map(provider => (
+          {cloudProviders.map(provider => (
             <option key={provider.value} value={provider.value}>
               {provider.label}
             </option>
           ))}
         </select>
         <select
-          className="w-full bg-white boder border-gray-300 rounded-md p-2"
-          name="vpx"
+          className="w-full bg-white border border-gray-300 rounded-md p-2"
+          name="vpc"
           required
           onChange={handleVpcChange}
           value={selectedVpc}
           >
           <option value="">Select VPC</option>
-          <vpcs.map(vpc => (
+          {vpcs.map(vpc => (
             <option key={vpc.value} value={vpc.value}>
               {vpc.label}
             </option>
@@ -65,5 +65,5 @@ export const ControlPanel: React.FC<ControlPanelProps> = ({ onVpcChange, onProvi
         </select>
       </div>
     </div>
-  ):
+  );
 };

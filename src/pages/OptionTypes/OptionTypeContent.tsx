@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { EC2InstancesTable } from "../../components/EC2InstancesTable/EC2InstancesTable";
 import { getOptionTypes } from "../../api/optionTypes";
+import { GenericResourceTable } from "../../components/GenericResourceTable/GenericResourceTable";
 
 // Define the OptionType interface to match your API response
 interface OptionType {
@@ -9,11 +10,11 @@ interface OptionType {
   Value: string;
   Global: boolean;
   DateCreated: string;
-  CreateBy: string;
+  CreatedBy: string;
 }
 
 // Adapt the API response to match the expected interface for the table
-// GenericResourcTable expect an id field
+// GenericResourceTable expects an id field
 interface TableOptionType {
   id: string;
   optionName: string;
@@ -35,7 +36,7 @@ useEffect(() => {
 
       // Transform the API data to match our table format
       const transformedData = data.map((option: OptionType) => ({
-        id: option.OptionID.toString(),
+        id: option.OptionId.toString(),
         optionName: option.Name,
         optionValue: option.Value,
         scope: option.Global ? 'Global' : 'Workstation',
@@ -53,7 +54,7 @@ useEffect(() => {
 
   fetchOptionTypes();
 }, []);
-  
+
   // Define columns for the table
   const columns = [
     {
@@ -69,6 +70,7 @@ useEffect(() => {
       header: 'Scope',
       accessor: 'scope' as const,
     },
+    {
       header: 'Date Created',
       accessor: 'dateCreated' as const,
       render: (value: string) => {
@@ -89,8 +91,8 @@ useEffect(() => {
   if (error) {
     return (
       <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded relative" role="alert">
-        <strong classNme="font-bold">Error!</strong>
-        <span classNme="block sm:inline"> {error}</span>
+        <strong className="font-bold">Error!</strong>
+        <span className="block sm:inline"> {error}</span>
       </div>
     );
   }

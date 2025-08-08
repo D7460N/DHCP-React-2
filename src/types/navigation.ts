@@ -8,6 +8,6 @@ export interface NavigationItem {
 }
 
 export interface BreadcrumbItem {
-  name: sting;
+  name: string;
   href: string;
 }

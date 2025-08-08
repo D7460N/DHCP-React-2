@@ -20,9 +20,9 @@ export const ScopeForm: React.FC<ScopeFormProps> = ({
     Description: initialScope?.Description || '',
     Subnet: initialScope?.Subnet || '',
     SubnetMask: initialScope?.SubnetMask || '',
-    StartIPv4Address: initialScope?.StartIpv4Address || '',
+    StartIPv4Address: initialScope?.StartIPv4Address || '',
     EndIPv4Address: initialScope?.EndIPv4Address || '',
-    Active: initialScope?.Active || '',
+    Active: initialScope?.Active || true,
     DateModified: initialScope?.DateModified || new Date().toISOString(),
     ModifiedBy: initialScope?.ModifiedBy || 'currentUser',
   });
@@ -78,7 +78,7 @@ export const ScopeForm: React.FC<ScopeFormProps> = ({
           await updateScope(scopeId, payload);
         }
       } else {
-        await createScope(payload)
+        await createScope(payload);
       }
 
       if (onSubmitSuccess) {
@@ -97,17 +97,17 @@ export const ScopeForm: React.FC<ScopeFormProps> = ({
 
   const handleReset = () => {
     if (initialScope) {
-    setForm({
-      Name: initialScope.Name,
-      Description: initialScope.Description,
-      Subnet: initialScope.Subnet,
-      SubnetMask: initialScope.SubnetMask,
-      StartIPv4Address: initialScope.StartIPv4Address,
-      EndIPv4Address: initialScope.EndIPv4Address,
-      Active: initialScope.Active,
-      DateModified: initialScope.DateModified,
-      ModifiedBy: initialScope.ModifiedBy,
-    });
+      setForm({
+        Name: initialScope.Name,
+        Description: initialScope.Description,
+        Subnet: initialScope.Subnet,
+        SubnetMask: initialScope.SubnetMask,
+        StartIPv4Address: initialScope.StartIPv4Address,
+        EndIPv4Address: initialScope.EndIPv4Address,
+        Active: initialScope.Active,
+        DateModified: initialScope.DateModified,
+        ModifiedBy: initialScope.ModifiedBy,
+      });
     } else {
       setForm({
         Name: '',
@@ -147,7 +147,7 @@ export const ScopeForm: React.FC<ScopeFormProps> = ({
           className="w-full border border-gray-300 rounded-md p-2"
           />
         <div className="grid grid-cols-2 gap-4">
-          <input 
+          <input
             name="Subnet"
             value={form.Subnet}
             onChange={handleInputChange}
@@ -155,7 +155,7 @@ export const ScopeForm: React.FC<ScopeFormProps> = ({
             required
             className="w-full border border-gray-300 rounded-md p-2"
             />
-          <input 
+          <input
             name="SubnetMask"
             value={form.SubnetMask}
             onChange={handleInputChange}
@@ -166,7 +166,7 @@ export const ScopeForm: React.FC<ScopeFormProps> = ({
         </div>
 
         <div className="grid grid-cols-2 gap-4">
-          <input 
+          <input
             name="StartIPv4Address"
             value={form.StartIPv4Address}
             onChange={handleInputChange}
@@ -174,7 +174,7 @@ export const ScopeForm: React.FC<ScopeFormProps> = ({
             required
             className="w-full border border-gray-300 rounded-md p-2"
             />
-          <input 
+          <input
             name="EndIPv4Address"
             value={form.EndIPv4Address}
             onChange={handleInputChange}

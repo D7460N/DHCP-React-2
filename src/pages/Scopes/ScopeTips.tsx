@@ -8,10 +8,10 @@ const ScopeTips: React.FC = () => {
       <div className="space-y-3 text-sm text-gray-700">
         <div>
           <h4 className="font-medium">Subnet Planning</h4>
-          <p>Ensure your stubnet matches your network design and doesn't overlap with other networks.</p>
+          <p>Ensure your subnet matches your network design and doesn't overlap with other networks.</p>
         </div>
         <div>
-          <h4 className="font-medium">Ip Range</h4>
+          <h4 className="font-medium">IP Range</h4>
           <p>Reserve IPs outside the DHCP scope for static assignments (servers, printers, etc.)</p>
         </div>
         <div>

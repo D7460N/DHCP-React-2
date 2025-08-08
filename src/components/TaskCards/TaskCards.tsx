@@ -13,7 +13,7 @@ interface Task {
 
 const TaskCards: React.FC = () => {
   // Define the tasks data structure
-  const tasks: Record<TaskStatus, Test[]> = {
+  const tasks: Record<TaskStatus, Task[]> = {
     'Overdue': [
       {
         id: '1',
@@ -53,7 +53,7 @@ const TaskCards: React.FC = () => {
 
   return (
     <div className="p-6">
-      <h3 className="text-md font-semibold mb-2">Task Requiring Immediate Action</h3>
+      <h3 className="text-md font-semibold mb-2">Tasks Requiring Immediate Action</h3>
       <div className="flex items-center space-x-4 mb-4">
         <div className="flex items-center">
           <div className="w-3 h-3 rounded-full bg-red-400 mr-2"></div>
@@ -74,11 +74,11 @@ const TaskCards: React.FC = () => {
             <span className={`inline-block px-2 py-1 rounded-full text-xs ${getStatusColor(status)}`}>
               {status}
             </span>
-            {taskList.map(()task) => (
+            {taskList.map((task) => (
               <div key={task.id} className="flex flex-col h-full">
                 <div className="flex-grow">
-                  <h3 className="mt-2 font-semibold">{task-title}</h3>
-                  <p className="mt-2 text-sm text-gray-600">{test.description}</p>
+                  <h3 className="mt-2 font-semibold">{task.title}</h3>
+                  <p className="mt-2 text-sm text-gray-600">{task.description}</p>
                 </div>
               </div>
             ))}

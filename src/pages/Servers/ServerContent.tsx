@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { GenericResourceTable } from "../../components/GenericResourceTable/GenericResourceTable";
 import { getServers } from "../../api/servers";
 
-// Define the OptionType interface to match your API response
+// Define the Server interface to match your API response
 interface Server {
   IPv4Address: string;
   FQDN: string;
@@ -12,7 +12,7 @@ interface Server {
 }
 
 // Adapt the API response to match the expected interface for the table
-// GenericResourcTable expect an id field
+// GenericResourceTable expects an id field
 interface TableServer {
   id: string;
   ipv4Address: string;
@@ -49,9 +49,9 @@ useEffect(() => {
     }
   };
 
-  fetchOptionTypes();
+  fetchServers();
 }, []);
-  
+
   // Define columns for the table
   const columns = [
     {
@@ -66,7 +66,7 @@ useEffect(() => {
       header: 'Server Type',
       accessor: 'serverType' as const,
     },
-    }
+    {
       header: 'Date Modified',
       accessor: 'dateModified' as const,
       render: (value: string) => {
@@ -87,13 +87,13 @@ useEffect(() => {
   if (error) {
     return (
       <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded relative" role="alert">
-        <strong classNme="font-bold">Error!</strong>
-        <span classNme="block sm:inline"> {error}</span>
+        <strong className="font-bold">Error!</strong>
+        <span className="block sm:inline"> {error}</span>
       </div>
     );
   }
 
-  if (optionTypes.length === 0) {
+  if (servers.length === 0) {
     return <div className="text-center p-4">No servers found.</div>;
   }
 
@@ -102,7 +102,7 @@ useEffect(() => {
       <GenericResourceTable<TableServer>
         title="Servers"
         description="List of all servers in the system"
-        data={optionTypes}
+        data={servers}
         columns={columns}
         resourceName="servers"
       />

@@ -21,13 +21,13 @@ export const getScopeById = async (id: string): Promise<Scope> => {
 export const createScope = async (scope: Scope): Promise<Scope> => {
   const response = await fetch(API_URL, {
     method: 'POST',
-    headers {
+    headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(scope),
   });
   if (!response.ok) {
-    throw new Error(`Failed to fetch scopes: ${response.statusText}`);
+    throw new Error(`Failed to create scopes: ${response.statusText}`);
   }
   return await response.json();
 };
@@ -35,7 +35,7 @@ export const createScope = async (scope: Scope): Promise<Scope> => {
 export const updateScope = async (id: string, scope: Scope): Promise<Scope> => {
   // Create a properly typed update payload
   const payload: ScopeUpdateRequest = {
-    Name: id, // Original name used for indentification
+    Name: id, // Original name used for identification
     UpdatedName: scope.Name // New name to update to
     };
 
@@ -44,7 +44,7 @@ export const updateScope = async (id: string, scope: Scope): Promise<Scope> => {
       payload.UpdatedDescription = scope.Description;
     }
 
-    if (scope.StartIPv4Address !==undefined) {
+    if (scope.StartIPv4Address !== undefined) {
       payload.UpdatedStartIPv4Address = scope.StartIPv4Address;
     }
 
@@ -52,8 +52,8 @@ export const updateScope = async (id: string, scope: Scope): Promise<Scope> => {
       payload.UpdatedEndIPv4Address = scope.EndIPv4Address;
     }
 
-    // Add other optional field as needed
-    if (scope.Active !==undefined) {
+    // Add other optional fields as needed
+    if (scope.Active !== undefined) {
       payload.UpdatedActive = scope.Active;
     }
 
