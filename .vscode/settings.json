@@ -5,8 +5,12 @@
     "originjs",
     "scopetypes",
     "servertypes",
+    "subfolders",
     "Topbar",
     "TTFB",
     "webfonts"
-  ]
+  ],
+  "terminal.integrated.enablePersistentSessions": true,
+  "terminal.integrated.gpuAcceleration": "on",
+  "terminal.integrated.suggest.enabled": true
 }
