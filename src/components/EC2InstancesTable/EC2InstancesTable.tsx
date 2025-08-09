@@ -12,13 +12,13 @@ interface EC2Instance {
   launchTime: string;
 }
 
-export const EC2InstancesTable = () {
+export const EC2InstancesTable: React.FC = () => {
   const [instances, setInstances] = useState<EC2Instance[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const fetchInstance = async () => {
+  const fetchInstances = async () => {
       try {
         const response = await axios.get('https://localhost:5110/api/aws/ec2/instances');
         setInstances(response.data);
@@ -30,7 +30,7 @@ export const EC2InstancesTable = () {
       }
     };
 
-    fetchInstances();
+  fetchInstances();
   }, []);
 
   if (isLoading) return <div>Loading instances...</div>;

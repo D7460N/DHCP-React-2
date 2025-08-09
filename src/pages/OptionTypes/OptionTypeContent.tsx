@@ -57,31 +57,14 @@ useEffect(() => {
 
   // Define columns for the table
   const columns = [
-    {
-      header: 'Option Name',
-      accessor: 'optionName' as const,
-    },
-    {
-      header: 'Option Value',
-      accessor: 'optionValue' as const,
-      render: (value: string) => value || 'Not set'
-    },
-    {
-      header: 'Scope',
-      accessor: 'scope' as const,
-    },
-    {
-      header: 'Date Created',
-      accessor: 'dateCreated' as const,
-      render: (value: string) => {
+    { header: 'Option Name', accessor: 'optionName' as keyof TableOptionType, title: 'Option Name', description: '', resourceName: 'option type', columns: [] },
+    { header: 'Option Value', accessor: 'optionValue' as keyof TableOptionType, render: (value: string) => value || 'Not set', title: 'Option Value', description: '', resourceName: 'option type', columns: [] },
+    { header: 'Scope', accessor: 'scope' as keyof TableOptionType, title: 'Scope', description: '', resourceName: 'option type', columns: [] },
+    { header: 'Date Created', accessor: 'dateCreated' as keyof TableOptionType, render: (value: string) => {
         const date = new Date(value);
         return date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
-      }
-    },
-    {
-      header: 'Created By',
-      accessor: 'createdBy' as const,
-    }
+      }, title: 'Date Created', description: '', resourceName: 'option type', columns: [] },
+    { header: 'Created By', accessor: 'createdBy' as keyof TableOptionType, title: 'Created By', description: '', resourceName: 'option type', columns: [] },
   ];
 
   if (isLoading) {

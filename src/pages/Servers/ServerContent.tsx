@@ -52,32 +52,13 @@ useEffect(() => {
   fetchServers();
 }, []);
 
-  // Define columns for the table
+  // ...existing code...
   const columns = [
-    {
-      header: 'Server IPv4 Address',
-      accessor: 'ipv4Address' as const,
-    },
-    {
-      header: 'Server FQDN',
-      accessor: 'fqdn' as const,
-    },
-    {
-      header: 'Server Type',
-      accessor: 'serverType' as const,
-    },
-    {
-      header: 'Date Modified',
-      accessor: 'dateModified' as const,
-      render: (value: string) => {
-        const date = new Date(value);
-        return date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
-      }
-    },
-    {
-      header: 'Modified By',
-      accessor: 'modifiedBy' as const,
-    }
+  { header: 'IPv4 Address', accessor: 'ipv4Address' as keyof TableServer, title: 'IPv4 Address', description: '', resourceName: 'server', columns: [] },
+  { header: 'FQDN', accessor: 'fqdn' as keyof TableServer, title: 'FQDN', description: '', resourceName: 'server', columns: [] },
+  { header: 'Server Type', accessor: 'serverType' as keyof TableServer, title: 'Server Type', description: '', resourceName: 'server', columns: [] },
+  { header: 'Date Modified', accessor: 'dateModified' as keyof TableServer, render: (value: string) => value, title: 'Date Modified', description: '', resourceName: 'server', columns: [] },
+  { header: 'Description', accessor: 'description' as keyof TableServer, title: 'Description', description: '', resourceName: 'server', columns: [] },
   ];
 
   if (isLoading) {

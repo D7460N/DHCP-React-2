@@ -1,3 +1,12 @@
+interface TableProps<T> {
+  title: string;
+  description: string;
+  data?: T[];
+  endpoint?: string;
+  columns: Column<T>[];
+  resourceName: string;
+}
+import React from 'react';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Pagination from '../Pagination/Pagination';
@@ -57,7 +66,7 @@ export function GenericResourceTable<T extends { id: string }>({
       <table className="min-w-full">
         <thead className="border-b">
           <tr>
-            {columns.map((column) => (
+            {columns.map((column: Column<T>) => (
               <th
                 key={`header-${String(column.accessor)}`}
                 className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
@@ -68,16 +77,16 @@ export function GenericResourceTable<T extends { id: string }>({
           </tr>
         </thead>
         <tbody className="bg-white divide-y divide-gray-200">
-          {data.map((item) => (
+          {data.map((item: T) => (
             <tr key={item.id}>
-              {columns.map((column) => (
+              {columns.map((column: Column<T>) => (
                 <td
                   key={`${item.id}-${String(column.accessor)}`}
                   className="px-6 py-4 whitespace-nowrap text-sm text-gray-500"
                 >
                   {column.render
-                    ? column.render(item[column.accessor], item)
-                    : String(item[column.accessor] ?? '-')}
+                    ? column.render((item as any)[column.accessor], item)
+                    : String((item as any)[column.accessor] ?? '-')}
                 </td>
               ))}
             </tr>

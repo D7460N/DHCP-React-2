@@ -8,7 +8,7 @@ const AuditContent = () => {
   return (
     <div className="flex gap-6">
       {/* Main content area */}
-      <div className={`flex-1 space-y-6 ${!isSidebarOpen ? 'w-full' : `}>
+  <div className={`flex-1 space-y-6 ${!isSidebarOpen ? 'w-full' : ''}`}>
       {/* Sidebar toggle buttons */}
       <div className="flex gap-2 mb-4">
         <button

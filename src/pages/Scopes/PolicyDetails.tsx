@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { deleteScope, getScopeById } from "./api/scopeApi";
 import { Scope } from "./types/scope";
 import { ActivityFeed } from "../../components/ActivityFeed/ActivityFeed";
-import DeleteConfirmationModal from "../../components/Modal/DeleteConfirmationModal";
+import { DeleteConfirmationModal } from "../../components/Modal/DeleteConfirmationModal";
 
 export default function ScopeDetails() {
   const {id} = useParams();
@@ -79,6 +79,7 @@ export default function ScopeDetails() {
     }
   };
 
+
   if (!scope) {
     return <div>Loading...</div>;
   }
@@ -89,7 +90,6 @@ export default function ScopeDetails() {
         <div className='md:col-span-2 bg-white border rounded-lg shadow-sm p-6'>
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-md font-semibold mb-2">Scope Details</h3>
-
             <div className="space-x-2">
               <button className="border border-red-300 text-red-500 px-3 py-1 rounded text-sm" onClick={() => setShowConfirmation(true)}>Delete Scope</button>
               <button className="border border-gray-300 px-3 py-1 rounded text-sm" onClick={() => handleEdit()}>Edit</button>
@@ -133,10 +133,12 @@ export default function ScopeDetails() {
               </thead>
               <tbody>
                 {/* Sample IP usage data, would be replaced with actual data */}
-                <td className="px-6 py-2">{scope.StartIPv4Address}</td>
-                <td className="px-6 py-2">device-01.example.com</td>
-                <td className="px-6 py-2">00:1A:2B:3C:4D:5E</td>
-                <td className="px-6 py-2">Allocated</td>
+                <tr>
+                  <td className="px-6 py-2">{scope.StartIPv4Address}</td>
+                  <td className="px-6 py-2">device-01.example.com</td>
+                  <td className="px-6 py-2">00:1A:2B:3C:4D:5E</td>
+                  <td className="px-6 py-2">Allocated</td>
+                </tr>
               </tbody>
             </table>
           </div>
@@ -166,17 +168,20 @@ export default function ScopeDetails() {
           onClose={() => setShowConfirmation(false)}
           onConfirm={handleDelete}
         />
+      </div>
     </div>
   );
 }
 
+
+
+
+// Helper function to calculate total addresses in an IPv4 range
 function calculateTotalAddresses(start: string, end: string): number {
-  // Simple implementation, in a real app you'd want to properly parse the IPs
   const startParts = start.split('.').map(Number);
   const endParts = end.split('.').map(Number);
-
+  if (startParts.length !== 4 || endParts.length !== 4 || startParts.some(isNaN) || endParts.some(isNaN)) return 0;
   const startNum = (startParts[0] << 24) | (startParts[1] << 16) | (startParts[2] << 8) | (startParts[3]);
   const endNum = (endParts[0] << 24) | (endParts[1] << 16) | (endParts[2] << 8) | (endParts[3]);
-
   return endNum - startNum + 1;
 }

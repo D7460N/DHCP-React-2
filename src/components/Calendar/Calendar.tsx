@@ -83,7 +83,7 @@ export default function Calendar() {
           <div className="border-t pt-4">
             <div className="flex justify-between items-center text-sm font-medium mb-2">
               <span>
-                {parseSelectedDate(selectedDate).toLocalDateString("en-US", { dateStyle: "long" })}
+                {parseSelectedDate(selectedDate).toLocaleDateString("en-US", { dateStyle: "long" })}
               </span>
               <button className="text-gray-500 hover:text-black">
                 <Plus className="w-4 h-4" />
@@ -94,7 +94,7 @@ export default function Calendar() {
                 <div key={i} className="bg-primary/50 text-sky-800 rounded-md p-2 text-sm">
                   <div className="font-medium">{event.title}</div>
                   <div className="text-xs text-sky-800">
-                    {parseSelectedDate(selectedDate).toLocalDateString("en-US", {
+                    {parseSelectedDate(selectedDate).toLocaleDateString("en-US", {
                       month: "short",
                       day: "numeric",
                     })}, {event.time}

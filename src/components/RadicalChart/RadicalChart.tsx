@@ -47,7 +47,7 @@ export default function RadialChart() {
   if (error) return <div className="p-6 text-red-500">{error}</div>;
   if (!complianceData) return <div className="p-6">No data available</div>;
 
-  const score = Math.round(complianceData.complianceScore);
+  const score = Math.round(complianceData.complianceScore ?? 0);
   const data = [
     { name: 'score', value: score },
     { name: 'remaining', value: 100 - score }

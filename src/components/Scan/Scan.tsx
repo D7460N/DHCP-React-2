@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Loader2, ShieldCheck } from "lucid-react";
+import { Loader2, ShieldCheck } from "lucide-react";
 import { motion } from "framer-motion";
 
 interface ScanResults {
@@ -25,19 +25,19 @@ export default function Scan() {
         policyName: "Owner Tag Required",
         isCompliant: false,
         failureReason: "Missing tag: Owner",
-        policyId: 1,
+  policyId: "1",
       },
       {
         resourceName: "dev-bucket",
         policyName: "Owner Tag Required",
         isCompliant: true,
-        policyId: 1,
+  policyId: "1",
       },
     ]);
     setStatus("complete");
   };
 
-  const handleViewDetails = (policyId: number) => {
+  const handleViewDetails = (policyId: string) => {
     if (typeof window !== "undefined") {
       window.location.href = `/policies/${policyId}`;
     }
