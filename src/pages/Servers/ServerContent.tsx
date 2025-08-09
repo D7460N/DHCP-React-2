@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { GenericResourceTable } from "../../components/GenericResourceTable/GenericResourceTable";
 import { getServers } from "../../api/servers";
 

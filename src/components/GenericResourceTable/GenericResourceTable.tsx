@@ -32,18 +32,18 @@ export function GenericResourceTable<T extends { id: string }>({
   useEffect(() => {
     if (endpoint && !initialData) {
       const fetchData = async () => {
-      try {
-        const response = await axios.get(endpoint);
-        setData(response.data);
-      } catch (err) {
-        setError(`Failed to fetch ${resourceName}`);
-        console.error(`Error fetching ${resourceName}:`, err);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    fetchData();
-  }
+        try {
+          const response = await axios.get(endpoint);
+          setData(response.data);
+        } catch (err) {
+          setError(`Failed to fetch ${resourceName}`);
+          console.error(`Error fetching ${resourceName}:`, err);
+        } finally {
+          setIsLoading(false);
+        }
+      };
+      fetchData();
+    }
   }, [endpoint, resourceName, initialData]);
 
   if (isLoading) return <div>Loading instances...</div>;
@@ -60,25 +60,26 @@ export function GenericResourceTable<T extends { id: string }>({
             {columns.map((column) => (
               <th
                 key={`header-${String(column.accessor)}`}
-               className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                >
+                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+              >
                 {column.header}
-            </th>
+              </th>
             ))}
+          </tr>
         </thead>
         <tbody className="bg-white divide-y divide-gray-200">
           {data.map((item) => (
             <tr key={item.id}>
               {columns.map((column) => (
-              <td
-                key={`${item.id}-${String(column.accessor)}`}
-               className="px-6 py-4 whitespace-nowrap text-sm text-gray-500"
+                <td
+                  key={`${item.id}-${String(column.accessor)}`}
+                  className="px-6 py-4 whitespace-nowrap text-sm text-gray-500"
                 >
-                {column.render
-                  ? column.render(item[column.accessor], item)
-                  : String(item[column.accessor] ?? '-')}
-            </td>
-            ))}
+                  {column.render
+                    ? column.render(item[column.accessor], item)
+                    : String(item[column.accessor] ?? '-')}
+                </td>
+              ))}
             </tr>
           ))}
         </tbody>
