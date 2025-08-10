@@ -5,10 +5,12 @@ interface DropdownItem {
   name: string;
 }
 
+
 const API_BASE_URL = "http://localhost:5110/api";
 
 export const getResourceTypes = async (): Promise<DropdownItem[]> => {
   try {
+    // Use the correct endpoint as per db.json
     const response = await axios.get<DropdownItem[]>(`${API_BASE_URL}/ResourceType`);
     return response.data;
   } catch (error) {
@@ -17,14 +19,4 @@ export const getResourceTypes = async (): Promise<DropdownItem[]> => {
   }
 };
 
-export const getResourceTypesByCloudProvider = async (providerId: string | number): Promise<DropdownItem[]> => {
-  try {
-    const response = await axios.get<DropdownItem[]>(
-      `${API_BASE_URL}/ResourceType/by-cloud?providerId=${providerId}`
-    );
-    return response.data;
-  } catch (error) {
-    console.error("Error fetching resource types by cloud provider:", error);
-    throw error;
-  }
-};
+// If you have a by-cloud endpoint in db.json, update here. Otherwise, leave as is or remove if not used.

@@ -12,37 +12,37 @@ import { NavigationItem } from '../types/navigation';
 export const navigationConfig: NavigationItem[] = [
   {
     name: 'Option Types',
-    href: '/admin/optiontypes',
+    href: '/optiontypes',
     icon: ClipboardList,
   },
   {
     name: 'Servers',
-    href: '/admin/servers',
+    href: '/servers',
     icon: ClipboardList,
   },
   {
     name: 'Scopes',
-    href: '/admin/scopes',
+    href: '/scopes',
     icon: ChartBar,
   },
   {
     name: 'Server Types',
-    href: '/admin/servertypes',
+    href: '/servertypes',
     icon: ChartBar,
   },
   {
     name: 'Option Sets',
-    href: '/admin/optionsets',
+    href: '/optionsets',
     icon: BriefcaseMedical,
   },
   {
     name: 'Scope Types',
-    href: '/admin/scopetypes',
+    href: '/scopetypes',
     icon: BriefcaseMedical,
   },
   {
     name: 'Audit',
-    href: '/admin/audit',
+    href: '/audit',
     icon: ChartBar,
   },
   {

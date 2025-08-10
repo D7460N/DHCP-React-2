@@ -30,7 +30,7 @@ export default function RadialChart() {
   useEffect(() => {
     const fetchComplianceScore = async () => {
       try {
-        const response = await axios.get<ComplianceScore>('http://localhost:5110/api/Compliance/score?teamId=1');
+        const response = await axios.get<ComplianceScore>('http://localhost:5110/score?teamId=1');
         setComplianceData(response.data);
       } catch (err) {
         setError('Failed to fetch compliance score');

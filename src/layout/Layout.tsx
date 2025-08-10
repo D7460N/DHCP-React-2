@@ -18,13 +18,13 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
       <div className="flex-1 flex flex-col">
         <main className="flex-1 p-8">
           <Routes>
-            <Route path="/admin/scopetypes" element={<ScopeTypesContent/>}/>
-            <Route path="/admin/optionsets" element={<OptionSetsContent/>}/>
-            <Route path="/admin/optiontypes" element={<OptionTypeContent/>}/>
-            <Route path="/admin/servertypes" element={<ServerTypesContent/>}/>
-            <Route path="/admin/servers" element={<ServerContent/>}/>
-            <Route path="/admin/scopes" element={<ScopeContent/>}/>
-            <Route path="/admin/audit" element={<AuditContent/>}/>
+            <Route path="/scopetypes" element={<ScopeTypesContent/>}/>
+            <Route path="/optionsets" element={<OptionSetsContent/>}/>
+            <Route path="/optiontypes" element={<OptionTypeContent/>}/>
+            <Route path="/servertypes" element={<ServerTypesContent/>}/>
+            <Route path="/servers" element={<ServerContent/>}/>
+            <Route path="/scopes" element={<ScopeContent/>}/>
+            <Route path="/audit" element={<AuditContent/>}/>
             <Route path="*" element={<ScopeContent/>}/>
           </Routes>
         </main>

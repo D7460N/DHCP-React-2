@@ -1,3 +1,9 @@
+
+import React from 'react';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import Pagination from '../Pagination/Pagination';
+
 interface TableProps<T> {
   title: string;
   description: string;
@@ -6,10 +12,6 @@ interface TableProps<T> {
   columns: Column<T>[];
   resourceName: string;
 }
-import React from 'react';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-import Pagination from '../Pagination/Pagination';
 
 interface Column<T> {
   header: string;

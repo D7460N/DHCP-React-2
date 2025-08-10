@@ -1,6 +1,6 @@
 import { Scope, ScopeUpdateRequest } from '../types/scope';
 
-const API_URL = 'http://localhost:5110/api/Scopes';
+const API_URL = 'http://localhost:5110/scopes';
 
 export const getScopes = async (): Promise<Scope[]> => {
   const response = await fetch(API_URL);

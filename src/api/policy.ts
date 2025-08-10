@@ -2,7 +2,8 @@ import axios from "axios";
 
 export const createPolicy = async (data: any) => {
   try {
-    const response = await axios.post("http://localhost:5110/api/policy", data);
+    // Use the correct endpoint as per db.json
+    const response = await axios.post("http://localhost:5110/policy", data);
     return response.data;
   } catch (error) {
     console.error("Error creating policies", error);
@@ -10,19 +11,21 @@ export const createPolicy = async (data: any) => {
   }
 };
 
-export const getPolicies = async (id: number) => {
+export const getPolicies = async () => {
   try {
-    const response = await axios.get("http://localhost:5110/api/policy");
+    // Use the correct endpoint as per db.json
+    const response = await axios.get("http://localhost:5110/policy");
     return response.data;
   } catch (error) {
-    console.error("Error fetching policy by ID:", error);
+    console.error("Error fetching policies:", error);
     throw error;
   }
 };
 
 export const getPolicyById = async (id: number) => {
   try {
-    const response = await axios.get(`http://localhost:5110/api/policy/${id}`);
+    // Use the correct endpoint as per db.json
+    const response = await axios.get(`http://localhost:5110/policy/${id}`);
     return response.data;
   } catch (error) {
     console.error("Error fetching policy by ID:", error);
@@ -32,7 +35,8 @@ export const getPolicyById = async (id: number) => {
 
 export const updatePolicy = async (id: number, updatePolicy: any) => {
   try {
-    const response = await axios.put(`http://localhost:5110/api/policy/${id}`, updatePolicy);
+    // Use the correct endpoint as per db.json
+    const response = await axios.put(`http://localhost:5110/policy/${id}`, updatePolicy);
     return response.data;
   } catch (error) {
     console.error("Error updating policy:", error);
@@ -42,7 +46,8 @@ export const updatePolicy = async (id: number, updatePolicy: any) => {
 
 export const deletePolicy = async (id: number) => {
   try {
-    const response = await axios.delete(`http://localhost:5110/api/policy/${id}`);
+    // Use the correct endpoint as per db.json
+    const response = await axios.delete(`http://localhost:5110/policy/${id}`);
     return response.data;
   } catch (error) {
     console.error("Error deleting policy:", error);
