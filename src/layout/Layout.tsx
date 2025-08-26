@@ -10,6 +10,7 @@ import ScopeTypesContent from '../pages/ScopeTypes';
 import OptionSetsContent from '../pages/OptionSets';
 import ServerTypesContent from '../pages/ServerTypes';
 import ScopeContent from '../pages/Scopes';
+import ScopeDetails from '../pages/Scopes/PolicyDetails';
 
 export const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -23,6 +24,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
             <Route path="/optiontypes" element={<OptionTypeContent/>}/>
             <Route path="/servertypes" element={<ServerTypesContent/>}/>
             <Route path="/servers" element={<ServerContent/>}/>
+            <Route path="/scopes/:id" element={<ScopeDetails/>}/>
             <Route path="/scopes" element={<ScopeContent/>}/>
             <Route path="/audit" element={<AuditContent/>}/>
             <Route path="*" element={<ScopeContent/>}/>
