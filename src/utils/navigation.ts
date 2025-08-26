@@ -1,5 +1,4 @@
 import { NavigationItem, BreadcrumbItem } from '../types/navigation';
-import { navigationConfig } from '../config/navigation';
 
 export const findActiveNavigation = (
   items: NavigationItem[],

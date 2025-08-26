@@ -1,8 +1,6 @@
-import { memo, useState } from "react";
-import { Link } from "react-router-dom";
+import { useState } from "react";
 import { MoreVertical } from "lucide-react";
 import { Scope } from "./types/scope";
-import { GenericResourceTable } from "../../components/GenericResourceTable/GenericResourceTable";
 
 type Props = {
   scopes: Scope[];

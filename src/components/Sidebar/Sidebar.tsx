@@ -1,7 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 import clsx from 'clsx';
 import { navigationConfig } from '../../config/navigation';
-import { findActiveNavigation, isRouteActive } from '../../utils/navigation';
+import { isRouteActive } from '../../utils/navigation';
 import { NavigationItem } from '../../types/navigation';
 import { CloudCogIcon } from 'lucide-react';
 

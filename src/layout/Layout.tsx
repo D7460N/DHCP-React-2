@@ -1,8 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import React from "react";
 import Sidebar from "../components/Sidebar/Sidebar";
-import { Topbar } from "../components/Topbar/Topbar";
-import { ScopeForm } from '../pages/Scopes/ScopeForm';
 import OptionTypeContent from '../pages/OptionTypes/OptionTypeContent';
 import ServerContent from '../pages/Servers/ServerContent';
 import AuditContent from '../pages/Audit';

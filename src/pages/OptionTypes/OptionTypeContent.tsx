@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { EC2InstancesTable } from "../../components/EC2InstancesTable/EC2InstancesTable";
 import { getOptionTypes } from "../../api/optionTypes";
 import { GenericResourceTable } from "../../components/GenericResourceTable/GenericResourceTable";
 

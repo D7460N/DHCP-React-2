@@ -10,7 +10,7 @@ import { Scope } from "./types/scope";
 const ScopeContent = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [selectedScope, setSelectedScope] = useState<Scope | null>(null);
-  const { scopes, isLoading, refreshScopes, error } = useScopes();
+  const { scopes, isLoading, refreshScopes } = useScopes();
 
   const handleDelete = async (id: string) => {
     try {

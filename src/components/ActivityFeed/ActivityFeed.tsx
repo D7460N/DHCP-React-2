@@ -1,7 +1,4 @@
-import userEvent from '@testing-library/user-event';
-import { Home, User, Folder, Calendar, FileText, ChartBar, Cog, ClipboardList, Cloudy, BriefcaseMedical } from 'lucide-react';
-import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+
 
 type Activity = {
   user: string;
@@ -21,7 +18,6 @@ const activityFeeds: Record<string, Activity[]> = {
 };
 
 export const ActivityFeed = () => {
-  const [comment, setComment] = useState('');
 
   return (
     <div className="p-6">
