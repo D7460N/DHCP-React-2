@@ -4,6 +4,7 @@ import { deleteScope, getScopeById } from "./api/scopeApi";
 import { Scope } from "./types/scope";
 import { ActivityFeed } from "../../components/ActivityFeed/ActivityFeed";
 import { DeleteConfirmationModal } from "../../components/Modal/DeleteConfirmationModal";
+import { useConfirmation } from "../../components/Confirmation";
 
 export default function ScopeDetails() {
   const {id} = useParams();
@@ -11,14 +12,41 @@ export default function ScopeDetails() {
   const [activeTab, setActiveTab] = useState('Overview');
   const [showConfirmation, setShowConfirmation] = useState(false);
   const navigate = useNavigate();
+  const { showConfirmation: showConfirmationDialog, showSuccess, showError } = useConfirmation();
 
   useEffect(() => {
     if (id) {
-      getScopeById(id).then(setScope);
+      getScopeById(id)
+        .then(setScope)
+        .catch((error) => {
+          showError(`Failed to load scope details: ${error.message}`, 'Load Error');
+        });
     }
-  }, [id]);
+  }, [id, showError]);
 
   const handleDelete = async () => {
+    if (!scope) return;
+    
+    const confirmed = await showConfirmationDialog({
+      type: 'warning',
+      title: 'Delete Scope',
+      message: `Delete scope "${scope.Name}"? This action cannot be undone.`,
+      confirmText: 'Delete',
+      cancelText: 'Cancel'
+    });
+
+    if (confirmed) {
+      try {
+        await deleteScope(id as string);
+        showSuccess('Scope deleted successfully');
+        navigate("/scopes");
+      } catch (error: any) {
+        showError(`Failed to delete scope: ${error.message}`, 'Delete Error');
+      }
+    }
+  };
+
+  const handleDeleteOld = async () => {
     if (!scope) return;
     await deleteScope(id as string);
     navigate("/scopes");
@@ -91,7 +119,8 @@ export default function ScopeDetails() {
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-md font-semibold mb-2">Scope Details</h3>
             <div className="space-x-2">
-              <button className="border border-red-300 text-red-500 px-3 py-1 rounded text-sm" onClick={() => setShowConfirmation(true)}>Delete Scope</button>
+              <button className="border border-red-300 text-red-500 px-3 py-1 rounded text-sm" onClick={handleDelete}>Delete Scope (New)</button>
+              <button className="border border-orange-300 text-orange-500 px-3 py-1 rounded text-sm" onClick={() => setShowConfirmation(true)}>Delete Scope (Old)</button>
               <button className="border border-gray-300 px-3 py-1 rounded text-sm" onClick={() => handleEdit()}>Edit</button>
             </div>
           </div>
@@ -120,7 +149,7 @@ export default function ScopeDetails() {
             <p className="mb-6">These IP addresses are currently allocated within this scope</p>
             <div className="text-sm mb-4">
               <p>IP Range: {scope.StartIPv4Address} - {scope.EndIPv4Address}</p>
-              <p>Total addresses: {calculateTotalAddresses(scope.StartIPv4Address, scope.EndIPv4Address)}</p>
+              <p>Total addresses: {scope.StartIPv4Address && scope.EndIPv4Address ? calculateTotalAddresses(scope.StartIPv4Address, scope.EndIPv4Address) : 'N/A'}</p>
             </div>
             <table className="w-full text-sm text-left">
               <thead>
@@ -166,7 +195,7 @@ export default function ScopeDetails() {
         <DeleteConfirmationModal
           isOpen={showConfirmation}
           onClose={() => setShowConfirmation(false)}
-          onConfirm={handleDelete}
+          onConfirm={handleDeleteOld}
         />
       </div>
     </div>

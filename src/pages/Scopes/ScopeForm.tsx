@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { createScope, getScopeById, updateScope } from "./api/scopeApi";
 import { Scope } from "./types/scope";
 import { useParams } from "react-router-dom";
+import { useConfirmation } from "../../components/Confirmation";
 
 interface ScopeFormProps {
   onSubmitSuccess?: () => void;
@@ -29,6 +30,7 @@ export const ScopeForm: React.FC<ScopeFormProps> = ({
 
   const { id } = useParams();
   const isEdit = !!id || !!initialScope;
+  const { showConfirmation, showSuccess, showError } = useConfirmation();
 
   // Fetch scope for editing if not provided as prop
   useEffect(() => {
@@ -66,6 +68,20 @@ export const ScopeForm: React.FC<ScopeFormProps> = ({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    const action = isEdit ? 'update' : 'create';
+    const confirmed = await showConfirmation({
+      type: 'confirm',
+      title: isEdit ? 'Update Scope' : 'Create Scope',
+      message: isEdit 
+        ? `Save changes to scope "${form.Name}"?` 
+        : `Create new scope "${form.Name}"?`,
+      confirmText: isEdit ? 'Save Changes' : 'Create Scope',
+      cancelText: 'Cancel'
+    });
+
+    if (!confirmed) return;
+
     const payload = {
       ...form,
       DateModified: new Date().toISOString()
@@ -76,16 +92,19 @@ export const ScopeForm: React.FC<ScopeFormProps> = ({
         const scopeId = id || initialScope?.Name;
         if (scopeId) {
           await updateScope(scopeId, payload);
+          showSuccess('Scope updated successfully');
         }
       } else {
         await createScope(payload);
+        showSuccess('Scope created successfully');
       }
 
       if (onSubmitSuccess) {
         onSubmitSuccess();
       }
-    } catch (error) {
-      console.error(error);
+    } catch (error: any) {
+      const operation = isEdit ? 'update' : 'create';
+      showError(`Failed to ${operation} scope: ${error.message}`, `${operation.charAt(0).toUpperCase() + operation.slice(1)} Error`);
     }
   };
 
