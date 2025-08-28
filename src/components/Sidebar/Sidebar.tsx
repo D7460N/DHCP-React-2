@@ -1,7 +1,7 @@
-import { NavLink, useLocation } from 'react-router-dom';
-import { useEffect, useMemo, useState, Fragment } from 'react';
+import { NavLink, useLocation } from "react-router-dom";
+import { useEffect, useMemo, useState, Fragment } from "react";
 import { LucideIcon } from "lucide-react";
-import { NavItem } from '../../types/navigation';
+import { NavItem } from "../../types/navigation";
 
 type Props ={
   items: NavItem[];
@@ -40,7 +40,7 @@ export default function Sidebar ({
   }, [storageKey]);
   useEffect(() => {
     localStorage.setItem(storageKey + ".open", JSON.stringify(open));
-  }, [storageKey]);
+  }, [storageKey, open]);
 
   const widthClass = useMemo(() => (collapsed ? "w-6" : "w-60"), [collapsed]);
 
@@ -108,7 +108,14 @@ export default function Sidebar ({
           >
             <span className="flex items-center gap-2 truncate">
               {Icon ? <Icon className="w-4 h-4 shrink-0" /> : null}
-              <span className={collapsed} ? "sr-only md:not-sr-only md:hidden" : ""}>
+              <span className={collapsed ? "sr-only md:not-sr-only md:hidden" : ""}>
+                {node.label}
+              </span>
+            </span>
+          </button>
+              
+          {expanded && (  
+            <div className{`mt-1 space-y-1 ${collapsed ? "hidden" : ""}`}>
               {node.children!.map((c) => (
                 <Item key={(c.id || c.label) + depth} node={c} depth={depth +1} />
               ))}
@@ -124,12 +131,12 @@ export default function Sidebar ({
         to={resolveTo(node.to)!}
         end={node.end ?? (node.to === "" || node.to === ".")}
         className={({ isActive }) =>
-          `${padding} py-2 flex items-center gap-2 rounded-lg text-sm hover:bg-primary/50 ${isActive ? "bg-primary/50 text-sky-800" : ""}`  
+          `${padding} py-2 flex items-center gap-2 rounded-lg text-sm hover:bg-primary/50 ${isActive ? "bg-primary/50 text-sky-800" : ""}`
         }
         title={collapsed ? node.label : undefined}
       >
         {node.icon ? <node.icon className="w-4 h-4" /> : null}
-        <span className={`${collapsed ? "sr-only md:not-sr-only" : ""} truncate`}>
+        <span className={`${collapsed ? "sr-only md:not-sr-only md:hidden" : ""} truncate`}>
           {node.label}
         </span>
       </NavLink>
