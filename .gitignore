@@ -10,6 +10,11 @@
 *.userosscache
 *.sln.docstates
 *.env
+*.env.*
+*.env.local
+*.env.*local
+package-lock.json
+.nvmrc
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
@@ -18,6 +23,8 @@
 mono_crash.*
 
 # Build results
+build/
+dist/
 [Dd]ebug/
 [Dd]ebugPublic/
 [Rr]elease/
@@ -126,6 +133,9 @@ ipch/
 *.cachefile
 *.VC.db
 *.VC.VC.opendb
+*.db
+*.db-shm
+*.db-wal
 
 # Visual Studio profiler
 *.psess
@@ -246,7 +256,13 @@ _pkginfo.txt
 !?*.[Cc]ache/
 
 # Others
+TestResults/
 ClientBin/
+bin/
+obj/
+*.dll
+*.exe
+*.pdb
 ~$*
 *~
 *.dbmdl
@@ -255,6 +271,8 @@ ClientBin/
 *.pfx
 *.publishsettings
 orleans.codegen.cs
+.DS_Store
+*.swp
 
 # Including strong name files can present a security risk
 # (https://github.com/github/gitignore/pull/2483#issue-259490424)
