@@ -9,7 +9,7 @@ interface ScanResults {
   policyName: string;
   isCompliant: boolean;
   failureReason?: string;
-  policyId?: string;
+  policyId?: number;
 }
 
 export default function Scan() {
@@ -25,19 +25,19 @@ export default function Scan() {
         policyName: "Owner Tag Required",
         isCompliant: false,
         failureReason: "Missing tag: Owner",
-  policyId: "1",
+        policyId: 1,
       },
       {
         resourceName: "dev-bucket",
         policyName: "Owner Tag Required",
         isCompliant: true,
-  policyId: "1",
+        policyId: 1,
       },
     ]);
     setStatus("complete");
   };
 
-  const handleViewDetails = (policyId: string) => {
+  const handleViewDetails = (policyId: number) => {
     if (typeof window !== "undefined") {
       window.location.href = `/policies/${policyId}`;
     }
@@ -84,7 +84,7 @@ export default function Scan() {
                         ? "border-green-300 bg-green-50"
                         : "border-red-300 bg-red-50"
                       }`}
-                      >
+                    >
                       <div className="font-medium text-gray-500">{r.resourceName}</div>
                       <div className="text-gray-500">
                         Policy: {r.policyName}
