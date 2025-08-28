@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 import axios from 'axios';
-import { Cell, Label, Pie, PieChart,} from "recharts";
+import {
+  Cell,
+  Label,
+  Pie,
+  PieChart,
+} from "recharts";
 
 type LabelProps = {
   viewBox?: {
@@ -13,7 +18,6 @@ type LabelProps = {
     clockWise: boolean;
   };
 };
-
 interface ComplianceScore {
   teamId: string;
   totalResources: number;
@@ -30,7 +34,7 @@ export default function RadialChart() {
   useEffect(() => {
     const fetchComplianceScore = async () => {
       try {
-        const response = await axios.get<ComplianceScore>('http://localhost:5110/score?teamId=1');
+        const response = await axios.get<ComplianceScore>('http://localhost:5110/api/Compliance/score?teamId=1');
         setComplianceData(response.data);
       } catch (err) {
         setError('Failed to fetch compliance score');
@@ -47,7 +51,7 @@ export default function RadialChart() {
   if (error) return <div className="p-6 text-red-500">{error}</div>;
   if (!complianceData) return <div className="p-6">No data available</div>;
 
-  const score = Math.round(complianceData.complianceScore ?? 0);
+  const score = Math.round(complianceData.complianceScore);
   const data = [
     { name: 'score', value: score },
     { name: 'remaining', value: 100 - score }
