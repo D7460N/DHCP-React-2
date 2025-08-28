@@ -1,26 +1,25 @@
-import userEvent from '@testing-library/user-event';
-import { Home, Users, Folder, Calendar, FileText, ChartBar, Cog, ClipboardList, Cloudy, BriefcaseMedical } from 'lucide-react';
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Grip } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import CaLogo from '../../assets/CaLogo.svg';
+import DnsLogo from '../../assets/DnsLogo.svg';
+import PrintLogo from '../../assets/PrintLogo.svg';
+import MaintenanceLogo from '../../assets/MaintenanceLogo.svg';
 
-type Activity = {
-  user: string;
-  time: string;
-  action: string;
-  comment?: string;
-};
+export default function AppLauncher() {
+  const [open, setOpen] = useState(false)
+  const navigate = useNavigate()
 
-const activityFeeds: Record<string, Activity[]> = {
-  "Activity": [
-    { user: 'John Smith', time: '2 hours ago', action: 'created a new policy' },
-    { user: 'John Smith', time: '3 hours ago', action: 'updated the policy' },
-    { user: 'John Smith', time: '4 hours ago', action: 'deleted the policy' },
-    { user: 'John Smith', time: '5 hours ago', action: 'created a new policy' },
-    { user: 'John Smith', time: '6 hours ago', action: 'updated the policy' }
-  ]
-};
-
-export const ActivityFeed = () => {
+  const apps = [
+      { name: 'Automation', time: '2 hours ago', action: 'created a new policy' },
+      { name: 'DNS', time: '3 hours ago', action: 'updated the policy' },
+      { name: 'DHCP', time: '4 hours ago', action: 'deleted the policy' },
+      { name: 'CA', time: '5 hours ago', action: 'created a new policy' },
+      { name: 'Another', time: '6 hours ago', action: 'updated the policy' }
+      { name: 'Print', time: '6 hours ago', action: 'updated the policy' }
+      { name: 'Maintenance', icon: MaintenanceLogo, action: 'updated the policy' }
+    ]
+  };
   const [comment, setComment] = useState('');
 
   return (
