@@ -1,4 +1,4 @@
-type PolicyType = {
+type CloudProvider = {
   id: string;
   name: string;
   description: string;
