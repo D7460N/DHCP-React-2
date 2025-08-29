@@ -4,4 +4,4 @@ type PolicyType = {
   description: string;
 };
 
-export default PolicyType;
+export default CloudProvider;
