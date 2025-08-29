@@ -1,11 +1,9 @@
 import {
-  LayoutDashboard,
-  Users,
   Settings,
   ClipboardList,
-  BriefcaseMedical,
   ChartBar,
-  Cloudy,
+  AppWindow,
+  Settings2Icon
 } from 'lucide-react';
 import { NavigationItem } from '../types/navigation';
 
