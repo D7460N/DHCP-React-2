@@ -5,52 +5,39 @@ import {
   AppWindow,
   Settings2Icon
 } from 'lucide-react';
-import { NavigationItem } from '../types/navigation';
+import { NavItem } from '../types/navigation';
 
-export const navigationConfig: NavigationItem[] = [
+export const navigationConfig: NavItem[] = [
   {
-    name: 'Option Types',
-    href: '/optiontypes',
+    label: 'Scopes',
+    to: '/scopes',
     icon: ClipboardList,
   },
   {
-    name: 'Servers',
-    href: '/servers',
+    label: 'Admin',
+    to: '/admin',
+    icon: Settings2Icon,
+    children: [
+      { label: 'Option Types', to '/admin/optionstypes'},
+      { label: 'Option Sets', to '/admin/optionssets'},
+      { label: 'Server Types', to '/admin/servertypes'},
+      { label: 'Scope Types', to '/admin/scopetypes'},
+      { label: 'Servers', to '/admin/servers'},
+    ]
+  },
+  {
+    label: 'Audit',
+    to: '/audit',
     icon: ClipboardList,
-  },
-  {
-    name: 'Scopes',
-    href: '/scopes',
-    icon: ChartBar,
-  },
-  {
-    name: 'Server Types',
-    href: '/servertypes',
-    icon: ChartBar,
-  },
-  {
-    name: 'Option Sets',
-    href: '/optionsets',
-    icon: BriefcaseMedical,
-  },
-  {
-    name: 'Scope Types',
-    href: '/scopetypes',
-    icon: BriefcaseMedical,
-  },
-  {
-    name: 'Audit',
-    href: '/audit',
-    icon: ChartBar,
   },
   {
     name: 'Settings',
     href: '/settings',
     icon: Settings,
     children: [
-      { name: 'General', href: '/settings' },
-      { name: 'Security', href: '/settings/security' },
-      // ... other settings routes
+      { label: 'General', to '/settings/general'},
+      { label: 'Security', to '/settings/security'},
+      { label: 'Application', to '/settings/application', icon: AppWindow},
     ]
   }
 ];
