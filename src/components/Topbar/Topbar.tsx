@@ -96,7 +96,7 @@ export const Topbar ({
         <button>
           <span className="sr-only">Notifications</span>
           <svg className="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24 ">
-            <path d="M15" />
+            <path d="M15 1745l-1.405-1.405C18.37 14.768 18 13.907 18 13V9a6 6 0 00-5-5.91V3a2 2 0 00-4 0v.09A6 6 0 004 9v4c0 .907-.37 1.768-.595 2.595L2 17h5m0 0c1a3 3 0 006 0v-1m-6 0h6" />
           </svg>
         </button>
         <div className="flex items-center gap-2">
