@@ -1,35 +1,33 @@
-import { Routes, Route } from 'react-router-dom';
-import React from "react";
+import { Outlet } from 'react-router-dom';
+import React, { Suspense } from "react";
 import Sidebar from "../components/Sidebar/Sidebar";
 import { Topbar } from "../components/Topbar/Topbar";
-import { ScopeForm } from '../pages/Scopes/ScopeForm';
-import OptionTypeContent from '../pages/OptionTypes/OptionTypeContent';
-import ServerContent from '../pages/Servers/ServerContent';
-import AuditContent from '../pages/Audit';
-import ScopeTypesContent from '../pages/ScopeTypes';
-import OptionSetsContent from '../pages/OptionSets';
-import ServerTypesContent from '../pages/ServerTypes';
-import ScopeContent from '../pages/Scopes';
-import ScopeDetails from '../pages/Scopes/PolicyDetails';
+import ClassificationBanner from '../components/ClassificationBanner/ClassificationBanner';
+import { navigationConfig } from '../config/navigation';
+import { GetClassificationData } from '../components/ClassificationBanner/ClassificationBanner';
 
-export const Layout = ({ children }: { children: React.ReactNode }) => {
+export default function Layout({ basePath = "" }: { basePath?: string }) {
   return (
-    <div className="flex h-screen bg-white">
-      <Sidebar />
-      <div className="flex-1 flex flex-col">
-        <main className="flex-1 p-8">
-          <Routes>
-            <Route path="/scopetypes" element={<ScopeTypesContent/>}/>
-            <Route path="/optionsets" element={<OptionSetsContent/>}/>
-            <Route path="/optiontypes" element={<OptionTypeContent/>}/>
-            <Route path="/servertypes" element={<ServerTypesContent/>}/>
-            <Route path="/servers" element={<ServerContent/>}/>
-            <Route path="/scopes/:id" element={<ScopeDetails/>}/>
-            <Route path="/scopes" element={<ScopeContent/>}/>
-            <Route path="/audit" element={<AuditContent/>}/>
-            <Route path="*" element={<ScopeContent/>}/>
-          </Routes>
-        </main>
+    <div className="bg-white dark:bg-zinc-900 border-zinc-200">
+      <ClassificationBanner
+        data = {GetClassificationData()}
+      />
+      <Topbar
+        classificationData = {GetClassificationData()}
+      />
+      <div className="flex h-screen">
+        <Sidebar
+          title=""
+          storageKey="dhcp.sidebar"
+          basePath={basePath}
+          expandOnActive={true}
+          items={navigationConfig}
+        />
+        <div className="flex-1 flex flex-col">
+          <main className="flex-1 p-8 bg-white dark:bg-zinc-900 dark:text-white dark:text-zinc-200">
+            <Outlet />
+          </main>
+        </div>
       </div>
     </div>
   );
