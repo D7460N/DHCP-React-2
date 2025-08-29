@@ -3,7 +3,7 @@ import { useEffect, useMemo, useState, Fragment } from "react";
 import { LucideIcon } from "lucide-react";
 import { NavItem } from "../../types/navigation";
 
-type Props ={
+type Props = {
   items: NavItem[];
   title?: string;
   storageKey?: string;
