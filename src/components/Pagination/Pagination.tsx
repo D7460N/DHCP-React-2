@@ -10,7 +10,7 @@ export default function Pagination () {
           <button className="px-3 py-1 rounded hover:bg-gray-100">1</button>
           <button className="px-3 py-1 rounded bg-primary/50 text-sky-800 font-medium shadow">2</button>
           <button className="px-3 py-1 rounded hover:bg-gray-100">3</button>
-          <span className="px-2 py-1">...3</span>
+          <span className="px-2 py-1">...</span>
           <button className="px-2 py-1 text-gray-500 hover:text-sky-800">Next &gt;</button>
         </nav>
       </div>

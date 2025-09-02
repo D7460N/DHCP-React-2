@@ -1,12 +1,13 @@
 {
-"name": "dhcp",
-"version": "0.1.0",
-"private": true,
-"dependencies": {
+  "name": "dhcp",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "/DHCP/",
+  "dependencies": {
     "@heroicons/react": "^2.2.0",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
-    "@testing-library/react": "^14.0.0",
+    "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.5.2",
     "@types/react": "^19.1.3",

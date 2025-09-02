@@ -6,18 +6,32 @@ import { X } from "lucide-react";
 import { useScopes } from "./hooks/useScopes";
 import { deleteScope, getScopeById } from "./api/scopeApi";
 import { Scope } from "./types/scope";
+import { useConfirmation } from "../../components/Confirmation";
 
 const ScopeContent = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [selectedScope, setSelectedScope] = useState<Scope | null>(null);
   const { scopes, isLoading, refreshScopes, error } = useScopes();
+  const { showConfirmation, showSuccess, showError } = useConfirmation();
 
   const handleDelete = async (id: string) => {
-    try {
-      await deleteScope(id);
-      await refreshScopes();
-    } catch (error) {
-      console.error("Error deleting scope:", error);
+    const scope = scopes.find(s => s.Name === id);
+    const confirmed = await showConfirmation({
+      type: 'warning',
+      title: 'Delete Scope',
+      message: `Delete scope "${scope?.Name || id}"? This action cannot be undone.`,
+      confirmText: 'Delete',
+      cancelText: 'Cancel'
+    });
+
+    if (confirmed) {
+      try {
+        await deleteScope(id);
+        await refreshScopes();
+        showSuccess('Scope deleted successfully');
+      } catch (error: any) {
+        showError(`Failed to delete scope: ${error.message}`, 'Delete Error');
+      }
     }
   };
 
@@ -27,8 +41,8 @@ const ScopeContent = () => {
       const scopeToEdit = await getScopeById(id);
       setSelectedScope(scopeToEdit);
       setIsSidebarOpen(true);
-    } catch (error) {
-      console.error("Error fetching scope for edit:", error);
+    } catch (error: any) {
+      showError(`Failed to load scope for editing: ${error.message}`, 'Load Error');
     }
   };
 

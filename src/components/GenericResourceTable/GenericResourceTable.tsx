@@ -1,17 +1,6 @@
-
-import React from 'react';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Pagination from '../Pagination/Pagination';
-
-interface TableProps<T> {
-  title: string;
-  description: string;
-  data?: T[];
-  endpoint?: string;
-  columns: Column<T>[];
-  resourceName: string;
-}
 
 interface Column<T> {
   header: string;
@@ -19,7 +8,7 @@ interface Column<T> {
   render?: (value: any, item: T) => React.ReactNode;
 }
 
-interface Column<T> {
+interface TableProps<T> {
   title: string;
   description: string;
   data?: T[];
@@ -57,8 +46,8 @@ export function GenericResourceTable<T extends { id: string }>({
     }
   }, [endpoint, resourceName, initialData]);
 
-  if (isLoading) return <div>Loading instances...</div>;
-  if (error) return <div>Error:</div>;
+  if (isLoading) return <div>Loading {resourceName}...</div>;
+  if (error) return <div>Error: {error}</div>;
   if (!data || data.length === 0) return <div>No {resourceName} found</div>;
 
   return (
@@ -68,7 +57,7 @@ export function GenericResourceTable<T extends { id: string }>({
       <table className="min-w-full">
         <thead className="border-b">
           <tr>
-            {columns.map((column: Column<T>) => (
+            {columns.map((column) => (
               <th
                 key={`header-${String(column.accessor)}`}
                 className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
@@ -79,16 +68,16 @@ export function GenericResourceTable<T extends { id: string }>({
           </tr>
         </thead>
         <tbody className="bg-white divide-y divide-gray-200">
-          {data.map((item: T) => (
+          {data.map((item) => (
             <tr key={item.id}>
-              {columns.map((column: Column<T>) => (
+              {columns.map((column) => (
                 <td
                   key={`${item.id}-${String(column.accessor)}`}
                   className="px-6 py-4 whitespace-nowrap text-sm text-gray-500"
                 >
                   {column.render
-                    ? column.render((item as any)[column.accessor], item)
-                    : String((item as any)[column.accessor] ?? '-')}
+                    ? column.render(item[column.accessor], item)
+                    : String(item[column.accessor] ?? '-')}
                 </td>
               ))}
             </tr>
