@@ -6,7 +6,7 @@ type Props = {
   data: ClassificationData | null;
 };
 
-export dault function ClassificationBanner({
+export default function ClassificationBanner({
   data,
 }: Props) {
 
