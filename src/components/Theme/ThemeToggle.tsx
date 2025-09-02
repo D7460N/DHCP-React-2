@@ -7,7 +7,7 @@ export default function ThemeToggle({ className = "" }: { className?: string }) 
     <button 
       type="button"
       onClick={toggle}
-      className{`darkr:border-zinc-700 ${className}`}
+      className={`dark:border-zinc-700 ${className}`}
       aria-label="Toggle theme"
       title={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
     >
