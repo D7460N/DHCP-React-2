@@ -20,7 +20,7 @@ export default function Sidebar ({
   collapseDefault = false,
   expandOnActive = true,
 }: Props) {
-  const [collapsed, setCollapsed] = useState(collapsedDefault);
+  const [collapsed, setCollapsed] = useState(collapseDefault);
   const [open, setOpen] = useState<Record<string, boolean>>({});
   const { pathname } = useLocation();
 
