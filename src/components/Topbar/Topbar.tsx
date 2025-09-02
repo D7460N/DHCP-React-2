@@ -12,7 +12,7 @@ export type RouteConfig = {
   logo: keyof typeof logos | string; // Can be either a key from logos or a URL string
 };
 
-type TobparProps = {
+type TopbarProps = {
   routeConfig?: Record<sting, RouteConfig>;
   defaultLogo?: string;
   defaultTitle?: string;
