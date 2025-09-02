@@ -17,17 +17,17 @@ export default function DhcpApp({ basePath = ""} : {basePath?: string}) {
   return (
     <Routes>
       <Route element={<Layout basePath={basePath} />}>
-        <Route path="/admin/scopetypes" element={<ScopeTypesContent/>}>
-        <Route path="/admin/optionsets" element={<OptionSetsContent/>}>
-        <Route path="/admin/optiontypes" element={<OptionTypeContent/>}>
-        <Route path="/admin/optionsets" element={<OptionSetContent/>}>
-        <Route path="/admin/servertypes" element={<ServerTypesContent/>}>
-        <Route path="/admin/servers" element={<ServerContent/>}>
-        <Route path="/scopes" element={<ScopeContent/>}>
-        <Route path="/scpoes/:id" element={<ScopeDetails/>}>
-        <Route path="/audit" element={<AuditContent/>}>
-        <Route path={'settings/application'} element={<SettingsContent />}>
-        <Route path="*" element={<ScopeContent/>}>
+        <Route path="/admin/scopetypes" element={<ScopeTypesContent/>}/>
+        <Route path="/admin/optionsets" element={<OptionSetsContent/>}/>
+        <Route path="/admin/optiontypes" element={<OptionTypeContent/>}/>
+        <Route path="/admin/optionsets" element={<OptionSetContent/>}/>
+        <Route path="/admin/servertypes" element={<ServerTypesContent/>}/>
+        <Route path="/admin/servers" element={<ServerContent/>}/>
+        <Route path="/scopes" element={<ScopeContent/>}/>
+        <Route path="/scpoes/:id" element={<ScopeDetails/>}/>
+        <Route path="/audit" element={<AuditContent/>}/>
+        <Route path={'settings/application'} element={<SettingsContent />}/>
+        <Route path="*" element={<ScopeContent/>}/>
         {/**<Route path="*" element{<div>Not Found</div>}/> */}
       </Route>
     </Routes>
