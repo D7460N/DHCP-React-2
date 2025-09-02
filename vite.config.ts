@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [
     react(),
     federation({
-      name: 'DHCP-React-2',
+      name: 'dhcp-portal',
       filename: 'remoteEntry.js',
       exposes: {
         './App': './src/App.tsx'
@@ -18,7 +18,7 @@ export default defineConfig({
     port: 3004,
   },
   preview: {
-    port: 4173,
+    port: 4443,
     cors: true,
     headers: {
       'Access-Control-Allow-Origin': '*',

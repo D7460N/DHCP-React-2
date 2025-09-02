@@ -14,6 +14,7 @@ export const ControlPanel: React.FC<ControlPanelProps> = ({ onVpcChange, onProvi
     { value: 'azure', label: 'Azure' },
     { value: 'gcp', label: 'Google Cloud Platform' }
   ];
+
   const vpcs = [
     { value: 'vpc-1', label: 'VPC 1' },
     { value: 'vpc-2', label: 'VPC 2' },

@@ -1,5 +1,5 @@
 import userEvent from '@testing-library/user-event';
-import { Home, User, Folder, Calendar, FileText, ChartBar, Cog, ClipboardList, Cloudy, BriefcaseMedical } from 'lucide-react';
+import { Home, Users, Folder, Calendar, FileText, ChartBar, Cog, ClipboardList, Cloudy, BriefcaseMedical } from 'lucide-react';
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
@@ -14,9 +14,9 @@ const activityFeeds: Record<string, Activity[]> = {
   "Activity": [
     { user: 'John Smith', time: '2 hours ago', action: 'created a new policy' },
     { user: 'John Smith', time: '3 hours ago', action: 'updated the policy' },
-    { user: 'John Smith', time: '2 hours ago', action: 'deleted the policy' },
-    { user: 'John Smith', time: '2 hours ago', action: 'created a new policy' },
-    { user: 'John Smith', time: '2 hours ago', action: 'updated the policy' }
+    { user: 'John Smith', time: '4 hours ago', action: 'deleted the policy' },
+    { user: 'John Smith', time: '5 hours ago', action: 'created a new policy' },
+    { user: 'John Smith', time: '6 hours ago', action: 'updated the policy' }
   ]
 };
 

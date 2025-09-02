@@ -1,6 +1,6 @@
-type ResourceType = {
+type CloudProvider = {
   id: string;
   name: string;
 };
 
-export default ResourceType;
+export default CloudProvider;

@@ -1,7 +1,7 @@
-type PolicyType = {
+type CloudProvider = {
   id: string;
   name: string;
   description: string;
 };
 
-export default PolicyType;
+export default CloudProvider;

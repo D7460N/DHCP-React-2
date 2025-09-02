@@ -20,7 +20,7 @@ export const EC2InstancesTable: React.FC = () => {
   useEffect(() => {
   const fetchInstances = async () => {
       try {
-  const response = await axios.get('http://localhost:5110/instances');
+  const response = await axios.get('http://localhost:5110/api/aws/ec2/instances');
         setInstances(response.data);
       } catch (err) {
         setError('Failed to fetch EC2 instances');
@@ -34,7 +34,7 @@ export const EC2InstancesTable: React.FC = () => {
   }, []);
 
   if (isLoading) return <div>Loading instances...</div>;
-  if (error) return <div>Error:</div>;
+  if (error) return <div>Error: {error}</div>;
   if (instances.length === 0) return <div>No instances found</div>;
 
   return (
