@@ -11,11 +11,11 @@ const root = ReactDom.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <TemeProvider>
+    <ThemeProvider>
       <HashRouter>
         <DhcpApp basePath='/'/>
       </HashRouter>
-    </TemeProvider>
+    </ThemeProvider>
   </React.StrictMode>
 );
 
