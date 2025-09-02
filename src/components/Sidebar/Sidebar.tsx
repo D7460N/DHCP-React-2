@@ -115,7 +115,7 @@ export default function Sidebar ({
           </button>
               
           {expanded && (  
-            <div className{`mt-1 space-y-1 ${collapsed ? "hidden" : ""}`}>
+            <div className={`mt-1 space-y-1 ${collapsed ? "hidden" : ""}`}>
               {node.children!.map((c) => (
                 <Item key={(c.id || c.label) + depth} node={c} depth={depth +1} />
               ))}
