@@ -40,7 +40,7 @@ export default function AppLauncher() {
                 }}
                 className="flex flex-col items-center text-center py-3 hover:bg-gray-100 rounded transition-colors"
               >
-                <div className="w-24 h-24 mg-1 flex items-center justify-center">
+                <div className="w-24 h-24 mb-1 flex items-center justify-center">
                   <img
                     src={app.icon}
                     alt={`${app.name} icon`}
