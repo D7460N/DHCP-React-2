@@ -30,7 +30,7 @@ interface ActionMenuProps<T> {
   onDelete: (row: T) => void;
 }
 
-function ActinMenu<T>({ row, onView, onEdit, onDelete }: ActionMenuProps<T>) {
+function ActionMenu<T>({ row, onView, onEdit, onDelete }: ActionMenuProps<T>) {
   const [isOpen, setIsOpen] = useState(false);
   
   return (
