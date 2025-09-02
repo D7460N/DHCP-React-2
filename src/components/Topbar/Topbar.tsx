@@ -13,7 +13,7 @@ export type RouteConfig = {
 };
 
 type TopbarProps = {
-  routeConfig?: Record<sting, RouteConfig>;
+  routeConfig?: Record<string, RouteConfig>;
   defaultLogo?: string;
   defaultTitle?: string;
   classificationData?: ClassificationData | null; 
