@@ -11,7 +11,7 @@ export default function ClassificationBanner({
 }: Props) {
 
   return (
-    <div className="flex justify-center"><p classname="bg-bluue-200 p-1">{data?.ClassificationBanner}</p></div>
+    <div className="flex justify-center"><p className="bg-blue-200 p-1">{data?.ClassificationBanner}</p></div>
   );
 };
 
