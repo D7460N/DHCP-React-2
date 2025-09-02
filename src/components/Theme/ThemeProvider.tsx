@@ -35,7 +35,7 @@ export default function ThemeProvider({ children }: { children: React.ReactNode 
     return () => mq.removeEventListener?.("change", handler);
   }, []);
 
-  const setTheme = useCallback((t: theme) => setThemeState(t), []);
+  const setTheme = useCallback((t: Theme) => setThemeState(t), []);
   const toggle = useCallback(() => setThemeState((t) => (t === "dark" ? "light" : "dark")), []);
   const value = useMemo(() => ({ theme, setTheme, toggle }), [theme, setTheme, toggle]);
 
