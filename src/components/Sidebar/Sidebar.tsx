@@ -92,7 +92,7 @@ export default function Sidebar ({
   const Item = ({ node, depth  = 0 }: { node: NavItem; depth?: number }) => {
     const key = node.id || node.label;
     const isGroup = !!node.children?.length;
-    const padding = collapsed ? "px-2" " `pl-${Math.min(2 + depth * 2, 10)} pr-2`;
+    const padding = collapsed ? "px-2" : `pl-${Math.min(2 + depth * 2, 10)} pr-2`;
     const Icon = node.icon;
 
     if (isGroup) {
