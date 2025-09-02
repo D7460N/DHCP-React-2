@@ -3,7 +3,7 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useState } 
 type Theme = "light" | "dark";
 type Ctx = { theme: Theme; setTheme: (t: Theme) => void; toggle: () => void };
 
-Const ThemeCtx = createContext<Ctx | null>(null);
+const ThemeCtx = createContext<Ctx | null>(null);
 const KEY = "sharedui.theme";
 
 function getSystemPref(): Theme {
