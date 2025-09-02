@@ -6,7 +6,7 @@ import DhcpApp from './App';
 import reportWebVitals from './reportWebVitals';
 import ThemeProvider from './components/Theme/ThemeProvider';
 
-const root = ReactDOM.createRoot(
+const root = ReactDom.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
