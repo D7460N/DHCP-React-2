@@ -65,7 +65,7 @@ function ActionMenu<T>({ row, onView, onEdit, onDelete }: ActionMenuProps<T>) {
         >
           <div className="py-1">
             <button
-              onClick=(e) => {
+              onClick={(e) => {
                 e.stopPropagation();
                 onView(row);
                 setIsOpen(false);
