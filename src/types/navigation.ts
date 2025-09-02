@@ -1,6 +1,6 @@
 import { LucideIcon } from 'lucide-react';
 
-export type NavItem {
+export type NavItem = {
   label: string;
   to?: string; // optional when it's a pure group/
   end?: string;
