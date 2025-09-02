@@ -48,8 +48,7 @@ export const Topbar ({
       const config = routerConfig[path];
       return {
         title: config.title,
-        logoUrl[config.logo as keyof typeof logos]
-        : config.logo
+        logoUrl: logos[config.logo as keyof typeof logos] || config.logo
       };
     }
 
