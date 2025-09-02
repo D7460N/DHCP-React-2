@@ -5,7 +5,7 @@ import ThemeToggle from '../Theme/ThemeToggle';
 import { dataClassificationData } from '../ClassificationBanner/types/ClassificationBanner';
 
 // Import images as a separate object
-import * as logos from './lgos';
+import * as logos from './logos';
 
 export type RouteConfig = {
   title: string;
