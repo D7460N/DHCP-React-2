@@ -4,7 +4,7 @@ interface CardProps {
   children: React.ReactNode;
 }
 
-export default functin Card({ title= "Card Title", description = "Card Subtitle", children}: CardProps){
+export default function Card({ title= "Card Title", description = "Card Subtitle", children}: CardProps){
 
   return (
     <div className="bg-white dark:bg-zinc-900 border-zinc-200 dark: border-zinc-800 border rounded-lg shadow-sm p-6">
