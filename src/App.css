@@ -28,7 +28,7 @@
   color: #61DAFB;
 }
 
-@kayframes App-logo-spin {
+@keyframes App-logo-spin {
   from {transform: rotate(0deg);}
   to {transform: rotate(360deg);}
 }
