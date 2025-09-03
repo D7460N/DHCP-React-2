@@ -28,7 +28,7 @@ export default function DhcpApp({ basePath = ""} : {basePath?: string}) {
         <Route path="/audit" element={<AuditContent/>}/>
         <Route path={'settings/application'} element={<SettingsContent />}/>
         <Route path="*" element={<ScopeContent/>}/>
-        {/**<Route path="*" element{<div>Not Found</div>}/> */}
+        {/**<Route path="*" element={<div>Not Found</div>}/> */}
       </Route>
     </Routes>
   );
