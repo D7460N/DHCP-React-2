@@ -220,7 +220,7 @@ export function RowClickableTable<T extends { id: string }>({
         data={data}
         endpoint={endpoint}
         columns={columnsWithActions}
-        resrouceName={resourceName}
+        resourceName={resourceName}
       />
       <RowModal<T>
         row={selectedRow}
