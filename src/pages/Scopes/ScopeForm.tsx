@@ -3,12 +3,19 @@ import React, { useEffect, useState } from "react";
 import { createScope, getScopeById, updateScope } from "./api/scopeApi";
 import { Scope } from "./types/scope";
 import { useParams } from "react-router-dom";
-import { useConfirmation } from "../../components/Confirmation";
+import { getServers } from "../admin/Servers/api/serverApi";
+import { getScopeTypes } from "../admin/ScopeTypes/api/scopeTypeApi";
+import { useNotification } from "../../components/Notification";
 
 interface ScopeFormProps {
   onSubmitSuccess?: () => void;
   onCancel?: () => void;
   initialScope?: Scope;
+}
+
+interface DropdownItem {
+  id: string;
+  name: string;
 }
 
 export const ScopeForm: React.FC<ScopeFormProps> = ({
@@ -23,6 +30,12 @@ export const ScopeForm: React.FC<ScopeFormProps> = ({
     SubnetMask: initialScope?.SubnetMask || '',
     StartIPv4Address: initialScope?.StartIPv4Address || '',
     EndIPv4Address: initialScope?.EndIPv4Address || '',
+    DHCPServer: initialScope?.DHCPServer || '',
+    ScopeType: initialScope?.ScopeType || '',
+    Delay: initialScope?.Delay || 0,
+    LeaseDuration: initialScope?.LeaseDuration || 30,
+    PrimaryRouter: initialScope?.PrimaryRouter || '',
+    SecondaryRouter: initialScope?.SecondaryRouter || '',
     Active: initialScope?.Active || true,
     DateModified: initialScope?.DateModified || new Date().toISOString(),
     ModifiedBy: initialScope?.ModifiedBy || 'currentUser',
@@ -30,8 +43,39 @@ export const ScopeForm: React.FC<ScopeFormProps> = ({
 
   const { id } = useParams();
   const isEdit = !!id || !!initialScope;
-  const { showConfirmation, showSuccess, showError } = useConfirmation();
+  const { showNotification, showSuccess, showError } = useNotification();
+  const [scopeTypes, setScopeTypes] = useState<DropdownItem[]>([]);
+  const [dhcpServers, setdhcpServers] = useState<DropdownItem[]>([]);
 
+  // Fetch initial dropdown data
+  useEffect(() => {
+    const fetchDropdownData = async () => {
+      try {
+        const [serverTypesData, scopeTypesData] = await Promise.all([
+          getServers(),
+          getScopeTypes()
+        ]);
+        const serversList: DropdownItem[] = serverTypesData.map(serverType => ({
+          id: serverType.ipv4Address,
+          name: serverType.ipv4Address + " ("+serverType.fqdn+")"
+        }));
+        const scopeTypesList: DropdownItem[] = scopeTypesData.map(scopeType => ({
+          id: scopeType.name,
+          name: scopeType.name
+        }));
+
+        setScopeTypes(scopeTypesList);
+        setDHCPServers(serversList);
+
+      } catch (error) {
+        console.error('Error fetching dropdown data:', error);
+      } finally {
+        // setIsLoading(false);
+      }
+    };
+    fetchDropdownData();
+  }, []);
+  
   // Fetch scope for editing if not provided as prop
   useEffect(() => {
     if (isEdit && !initialScope && id) {
@@ -51,6 +95,12 @@ export const ScopeForm: React.FC<ScopeFormProps> = ({
         SubnetMask: initialScope.SubnetMask,
         StartIPv4Address: initialScope.StartIPv4Address,
         EndIPv4Address: initialScope.EndIPv4Address,
+        DHCPServer: initialScope.DHCPServer,
+        ScopeType: initialScope.ScopeType,
+        Delay: initialScope.Delay,
+        LeaseDuration: initialScope.LeaseDuration,
+        PrimaryRouter: initialScope.PrimaryRouter,
+        SecondaryRouter: initialScope.SecondaryRouter,
         Active: initialScope.Active,
         DateModified: initialScope.DateModified,
         ModifiedBy: initialScope.ModifiedBy,
@@ -70,12 +120,11 @@ export const ScopeForm: React.FC<ScopeFormProps> = ({
     e.preventDefault();
     
     const action = isEdit ? 'update' : 'create';
-    const confirmed = await showConfirmation({
+    const confirmed = await showNotification({
       type: 'confirm',
       title: isEdit ? 'Update Scope' : 'Create Scope',
-      message: isEdit 
-        ? `Save changes to scope "${form.Name}"?` 
-        : `Create new scope "${form.Name}"?`,
+      message: isEdit
+        ? `Save changes to scope "${form.Name}"?` : `Create new scope "${form.Name}"?`,
       confirmText: isEdit ? 'Save Changes' : 'Create Scope',
       cancelText: 'Cancel'
     });
