@@ -18,11 +18,11 @@ export const navigationConfig: NavItem[] = [
     to: '/admin',
     icon: Settings2Icon,
     children: [
-      { label: 'Option Types', to: '/admin/optionstypes'},
-      { label: 'Option Sets', to: '/admin/optionssets'},
-      { label: 'Server Types', to: '/admin/servertypes'},
-      { label: 'Scope Types', to: '/admin/scopetypes'},
-      { label: 'Servers', to: '/admin/servers'},
+      { label: 'Option Types', to: '/admin/optionstypes' },
+      { label: 'Option Sets', to: '/admin/optionssets' },
+      { label: 'Server Types', to: '/admin/servertypes' },
+      { label: 'Scope Types', to: '/admin/scopetypes' },
+      { label: 'Servers', to: '/admin/servers' },
     ]
   },
   {
@@ -35,9 +35,9 @@ export const navigationConfig: NavItem[] = [
     href: '/settings',
     icon: Settings,
     children: [
-      { label: 'General', to '/settings/general'},
-      { label: 'Security', to '/settings/security'},
-      { label: 'Application', to '/settings/application', icon: AppWindow},
+      { label: 'General', to '/settings/general' },
+      { label: 'Security', to '/settings/security' },
+      { label: 'Application', to '/settings/application', icon: AppWindow },
     ]
   }
 ];
