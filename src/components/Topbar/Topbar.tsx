@@ -54,7 +54,7 @@ export const Topbar ({
 
     // Then check for wildcard matches
     const matchingRoute = Object.entries(routeConfig).find([route]) => {
-      if (route.endWith('/*')) {
+      if (route.endsWith('/*')) {
         const baseRoute = route.slice(0, -2);
         return path === baseRoute || path.startsWith(baseRoute + '/');
       }
