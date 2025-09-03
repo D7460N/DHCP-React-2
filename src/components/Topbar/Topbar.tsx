@@ -86,7 +86,7 @@ export const Topbar ({
             className="w-full h-full object-contain"
           />
         </div>
-        <div className="text-xl dark: text-white">{pageInfo.title}</div>
+        <div className="text-xl dark:text-white">{pageInfo.title}</div>
       </div>
 
       <div className="flex items-center gap-4">
