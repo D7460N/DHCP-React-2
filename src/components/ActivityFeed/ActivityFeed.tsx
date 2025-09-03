@@ -28,6 +28,7 @@ export const ActivityFeed = () => {
       {Object.entries(activityFeeds).map(([title, activities]) => (
         <div key={title}>
           <h3 className="font-semibold mb-6">{title}</h3>
+
           {activities.map((activity: Activity, idx) => (
             <div key={idx} className="flex items-start space-x-2 relative">
               <div className="flex flex-col items-center mr-2">
