@@ -18,11 +18,11 @@ export const navigationConfig: NavItem[] = [
     to: '/admin',
     icon: Settings2Icon,
     children: [
-      { label: 'Option Types', to '/admin/optionstypes'},
-      { label: 'Option Sets', to '/admin/optionssets'},
-      { label: 'Server Types', to '/admin/servertypes'},
-      { label: 'Scope Types', to '/admin/scopetypes'},
-      { label: 'Servers', to '/admin/servers'},
+      { label: 'Option Types', to: '/admin/optionstypes'},
+      { label: 'Option Sets', to: '/admin/optionssets'},
+      { label: 'Server Types', to: '/admin/servertypes'},
+      { label: 'Scope Types', to: '/admin/scopetypes'},
+      { label: 'Servers', to: '/admin/servers'},
     ]
   },
   {
