@@ -24,7 +24,7 @@ export default function DhcpApp({ basePath = ""} : {basePath?: string}) {
         <Route path="/admin/servertypes" element={<ServerTypesContent/>}/>
         <Route path="/admin/servers" element={<ServerContent/>}/>
         <Route path="/scopes" element={<ScopeContent/>}/>
-        <Route path="/scpoes/:id" element={<ScopeDetails/>}/>
+        <Route path="/scopes/:id" element={<ScopeDetails/>}/>
         <Route path="/audit" element={<AuditContent/>}/>
         <Route path={'settings/application'} element={<SettingsContent />}/>
         <Route path="*" element={<ScopeContent/>}/>
