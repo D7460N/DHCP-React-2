@@ -154,6 +154,7 @@ export const ScopeForm: React.FC<ScopeFormProps> = ({
     } catch (error: any) {
       const operation = isEdit ? 'update' : 'create';
       showError(`Failed to ${operation} scope: ${error.message}`, `${operation.charAt(0).toUpperCase() + operation.slice(1)} Error`);
+      console.error(error);
     }
   };
 
@@ -172,6 +173,12 @@ export const ScopeForm: React.FC<ScopeFormProps> = ({
         SubnetMask: initialScope.SubnetMask,
         StartIPv4Address: initialScope.StartIPv4Address,
         EndIPv4Address: initialScope.EndIPv4Address,
+        DHCPServer: initialScope.DHCPServer,
+        ScopeType: initialScope.ScopeType,
+        Delay: initialScope.Delay,
+        LeaseDuration: initialScope.LeaseDuration,
+        PrimaryRouter: initialScope.PrimaryRouter,
+        SecondaryRouter: initialScope.SecondaryRouter,
         Active: initialScope.Active,
         DateModified: initialScope.DateModified,
         ModifiedBy: initialScope.ModifiedBy,
@@ -184,6 +191,12 @@ export const ScopeForm: React.FC<ScopeFormProps> = ({
         SubnetMask: '',
         StartIPv4Address: '',
         EndIPv4Address: '',
+        DHCPServer: '',
+        ScopeType: '',
+        Delay: 0,
+        LeaseDuration: 30,
+        PrimaryRouter: '',
+        SecondaryRouter: '',
         Active: true,
         DateModified: new Date().toISOString(),
         ModifiedBy: 'currentUser',
@@ -199,39 +212,47 @@ export const ScopeForm: React.FC<ScopeFormProps> = ({
         Enter the details of the scope.
       </p>
       <form onSubmit={handleSubmit} className="space-y-4">
-        <input
-          name="Name"
-          value={form.Name}
-          onChange={handleInputChange}
-          placeholder="Scope Name"
-          required
-          className="w-full border border-gray-300 rounded-md p-2"
-          />
-        <textarea
-          name="Description"
-          value={form.Description}
-          onChange={handleInputChange}
-          placeholder="Description"
-          className="w-full border border-gray-300 rounded-md p-2"
-          />
-        <div className="grid grid-cols-2 gap-4">
+        <div>
           <input
-            name="Subnet"
-            value={form.Subnet}
+            name="Name"
+            value={form.Name}
             onChange={handleInputChange}
-            placeholder="Subnet (e.g. 192.168.1.0)"
+            placeholder="Scope Name"
             required
             className="w-full border border-gray-300 rounded-md p-2"
             />
-          <input
-            name="SubnetMask"
-            value={form.SubnetMask}
-            onChange={handleInputChange}
-            placeholder="Subnet Mask (e.g. 255.255.255.0)"
-            required
-            className="w-full border border-gray-300 rounded-md p-2"
-            />
-        </div>
+          </div>
+          <div>
+            <label className="block  text-sm font-medium text-gray-700 mb-1">Description</label>
+            <textarea
+              name="Description"
+              value={form.Description}
+              onChange={handleInputChange}
+              placeholder="Description"
+              className="w-full border border-gray-300 rounded-md p-2"
+              />
+          </div>
+          <div className="grid grid-cols-2 gap-4">
+            <div>
+              <input
+                name="Subnet"
+                value={form.Subnet}
+                onChange={handleInputChange}
+                placeholder="Subnet (e.g. 192.168.1.0)"
+                required
+                className="w-full border border-gray-300 rounded-md p-2"
+                />
+            </div>
+            <div>
+              <input
+                name="SubnetMask"
+                value={form.SubnetMask}
+                onChange={handleInputChange}
+                placeholder="Subnet Mask (e.g. 255.255.255.0)"
+                required
+                className="w-full border border-gray-300 rounded-md p-2"
+                />
+            </div>
 
         <div className="grid grid-cols-2 gap-4">
           <input
