@@ -12,7 +12,7 @@ const FormSidebar: React.FC<FormSidebarProps> = ({ isOpen, onClose, children }) 
 
   return (
     <div className="w-1/4 space-y-6">
-      <div className='bg-white darkLbg-zinc-900 broder-zinc-200 dark:border-zinc-800 border rounde-lg shadow-sm relative -p-6'>
+      <div className='bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800 border rounded-lg shadow-sm relative p-6'>
         <div className="absolute top-3 right-3 pb-6">
           <button 
             onClick={onClose}
